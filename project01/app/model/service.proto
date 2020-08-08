@@ -2,8 +2,8 @@ syntax = "proto3";
 
 package model;
 import "google/protobuf/Empty.proto";
-import "project01/app/model/database.proto";
+import "app/model/database.proto";
 
-service ServiceName {
-  rpc ShowAll(empty) returns (UserList) {}
+service Inventory {
+  rpc ShowAll(google.protobuf.Empty) returns (Item) {}
 }
