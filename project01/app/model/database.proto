@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package model;
+
+message Item{
+  int32 id_item = 1;
+  string nama_item = 2;
+  int32 jumlah = 3;
+  int32 kategori = 4;
+}
+
+message User{
+  int32 id_item = 1;
+  string nama_lengkap = 2;
+  string username = 3;
+  string password = 4;
+}
+
+message Kategori{
+  int32 id_kategori = 1;
+  string nama_kategori = 2;
+}
+
+message UserList{
+  repeated Item ItemList = 1;
+}

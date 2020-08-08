@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+package model;
+import "google/protobuf/Empty.proto";
+import "project01/app/model/database.proto";
+
+service ServiceName {
+  rpc ShowAll(empty) returns (UserList) {}
+}
