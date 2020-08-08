@@ -7,10 +7,11 @@ import (
   "project01/app/model"
   "github.com/golang/protobuf/ptypes/empty"
   "google.golang.org/grpc"
+  "project01/app/config"
 )
 
 func GetItem() model.InventoryClient {
-  port := ":9000"
+  port := config.SERVER_PORT
   conn, err := grpc.Dial(port, grpc.WithInsecure())
   if err != nil {
     log.Fatalf("Could not connect to ",port, err)

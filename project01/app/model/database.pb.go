@@ -25,6 +25,44 @@ const (
 // of the legacy proto package is being used.
 const _ = proto.ProtoPackageIsVersion4
 
+type Empty struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+}
+
+func (x *Empty) Reset() {
+	*x = Empty{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_app_model_database_proto_msgTypes[0]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *Empty) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Empty) ProtoMessage() {}
+
+func (x *Empty) ProtoReflect() protoreflect.Message {
+	mi := &file_app_model_database_proto_msgTypes[0]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Empty.ProtoReflect.Descriptor instead.
+func (*Empty) Descriptor() ([]byte, []int) {
+	return file_app_model_database_proto_rawDescGZIP(), []int{0}
+}
+
 type Item struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -34,12 +72,13 @@ type Item struct {
 	NamaItem string `protobuf:"bytes,2,opt,name=nama_item,json=namaItem,proto3" json:"nama_item,omitempty"`
 	Jumlah   int32  `protobuf:"varint,3,opt,name=jumlah,proto3" json:"jumlah,omitempty"`
 	Kategori int32  `protobuf:"varint,4,opt,name=kategori,proto3" json:"kategori,omitempty"`
+	IdUser   int32  `protobuf:"varint,5,opt,name=id_user,json=idUser,proto3" json:"id_user,omitempty"`
 }
 
 func (x *Item) Reset() {
 	*x = Item{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_app_model_database_proto_msgTypes[0]
+		mi := &file_app_model_database_proto_msgTypes[1]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -52,7 +91,7 @@ func (x *Item) String() string {
 func (*Item) ProtoMessage() {}
 
 func (x *Item) ProtoReflect() protoreflect.Message {
-	mi := &file_app_model_database_proto_msgTypes[0]
+	mi := &file_app_model_database_proto_msgTypes[1]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -65,7 +104,7 @@ func (x *Item) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Item.ProtoReflect.Descriptor instead.
 func (*Item) Descriptor() ([]byte, []int) {
-	return file_app_model_database_proto_rawDescGZIP(), []int{0}
+	return file_app_model_database_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *Item) GetIdItem() int32 {
@@ -96,12 +135,19 @@ func (x *Item) GetKategori() int32 {
 	return 0
 }
 
+func (x *Item) GetIdUser() int32 {
+	if x != nil {
+		return x.IdUser
+	}
+	return 0
+}
+
 type User struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	IdItem      int32  `protobuf:"varint,1,opt,name=id_item,json=idItem,proto3" json:"id_item,omitempty"`
+	IdUser      int32  `protobuf:"varint,1,opt,name=id_user,json=idUser,proto3" json:"id_user,omitempty"`
 	NamaLengkap string `protobuf:"bytes,2,opt,name=nama_lengkap,json=namaLengkap,proto3" json:"nama_lengkap,omitempty"`
 	Username    string `protobuf:"bytes,3,opt,name=username,proto3" json:"username,omitempty"`
 	Password    string `protobuf:"bytes,4,opt,name=password,proto3" json:"password,omitempty"`
@@ -110,7 +156,7 @@ type User struct {
 func (x *User) Reset() {
 	*x = User{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_app_model_database_proto_msgTypes[1]
+		mi := &file_app_model_database_proto_msgTypes[2]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -123,7 +169,7 @@ func (x *User) String() string {
 func (*User) ProtoMessage() {}
 
 func (x *User) ProtoReflect() protoreflect.Message {
-	mi := &file_app_model_database_proto_msgTypes[1]
+	mi := &file_app_model_database_proto_msgTypes[2]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -136,12 +182,12 @@ func (x *User) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use User.ProtoReflect.Descriptor instead.
 func (*User) Descriptor() ([]byte, []int) {
-	return file_app_model_database_proto_rawDescGZIP(), []int{1}
+	return file_app_model_database_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *User) GetIdItem() int32 {
+func (x *User) GetIdUser() int32 {
 	if x != nil {
-		return x.IdItem
+		return x.IdUser
 	}
 	return 0
 }
@@ -179,7 +225,7 @@ type Kategori struct {
 func (x *Kategori) Reset() {
 	*x = Kategori{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_app_model_database_proto_msgTypes[2]
+		mi := &file_app_model_database_proto_msgTypes[3]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -192,7 +238,7 @@ func (x *Kategori) String() string {
 func (*Kategori) ProtoMessage() {}
 
 func (x *Kategori) ProtoReflect() protoreflect.Message {
-	mi := &file_app_model_database_proto_msgTypes[2]
+	mi := &file_app_model_database_proto_msgTypes[3]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -205,7 +251,7 @@ func (x *Kategori) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Kategori.ProtoReflect.Descriptor instead.
 func (*Kategori) Descriptor() ([]byte, []int) {
-	return file_app_model_database_proto_rawDescGZIP(), []int{2}
+	return file_app_model_database_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *Kategori) GetIdKategori() int32 {
@@ -227,13 +273,13 @@ type UserList struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ItemList []*Item `protobuf:"bytes,1,rep,name=ItemList,proto3" json:"ItemList,omitempty"`
+	UserList []*User `protobuf:"bytes,1,rep,name=UserList,proto3" json:"UserList,omitempty"`
 }
 
 func (x *UserList) Reset() {
 	*x = UserList{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_app_model_database_proto_msgTypes[3]
+		mi := &file_app_model_database_proto_msgTypes[4]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -246,7 +292,7 @@ func (x *UserList) String() string {
 func (*UserList) ProtoMessage() {}
 
 func (x *UserList) ProtoReflect() protoreflect.Message {
-	mi := &file_app_model_database_proto_msgTypes[3]
+	mi := &file_app_model_database_proto_msgTypes[4]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -259,12 +305,106 @@ func (x *UserList) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UserList.ProtoReflect.Descriptor instead.
 func (*UserList) Descriptor() ([]byte, []int) {
-	return file_app_model_database_proto_rawDescGZIP(), []int{3}
+	return file_app_model_database_proto_rawDescGZIP(), []int{4}
 }
 
-func (x *UserList) GetItemList() []*Item {
+func (x *UserList) GetUserList() []*User {
+	if x != nil {
+		return x.UserList
+	}
+	return nil
+}
+
+type ItemList struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	ItemList []*Item `protobuf:"bytes,1,rep,name=ItemList,proto3" json:"ItemList,omitempty"`
+}
+
+func (x *ItemList) Reset() {
+	*x = ItemList{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_app_model_database_proto_msgTypes[5]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *ItemList) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ItemList) ProtoMessage() {}
+
+func (x *ItemList) ProtoReflect() protoreflect.Message {
+	mi := &file_app_model_database_proto_msgTypes[5]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ItemList.ProtoReflect.Descriptor instead.
+func (*ItemList) Descriptor() ([]byte, []int) {
+	return file_app_model_database_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *ItemList) GetItemList() []*Item {
 	if x != nil {
 		return x.ItemList
+	}
+	return nil
+}
+
+type KategoriList struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	KategoriList []*Kategori `protobuf:"bytes,1,rep,name=KategoriList,proto3" json:"KategoriList,omitempty"`
+}
+
+func (x *KategoriList) Reset() {
+	*x = KategoriList{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_app_model_database_proto_msgTypes[6]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *KategoriList) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*KategoriList) ProtoMessage() {}
+
+func (x *KategoriList) ProtoReflect() protoreflect.Message {
+	mi := &file_app_model_database_proto_msgTypes[6]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use KategoriList.ProtoReflect.Descriptor instead.
+func (*KategoriList) Descriptor() ([]byte, []int) {
+	return file_app_model_database_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *KategoriList) GetKategoriList() []*Kategori {
+	if x != nil {
+		return x.KategoriList
 	}
 	return nil
 }
@@ -274,30 +414,40 @@ var File_app_model_database_proto protoreflect.FileDescriptor
 var file_app_model_database_proto_rawDesc = []byte{
 	0x0a, 0x18, 0x61, 0x70, 0x70, 0x2f, 0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x2f, 0x64, 0x61, 0x74, 0x61,
 	0x62, 0x61, 0x73, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x12, 0x05, 0x6d, 0x6f, 0x64, 0x65,
-	0x6c, 0x22, 0x70, 0x0a, 0x04, 0x49, 0x74, 0x65, 0x6d, 0x12, 0x17, 0x0a, 0x07, 0x69, 0x64, 0x5f,
-	0x69, 0x74, 0x65, 0x6d, 0x18, 0x01, 0x20, 0x01, 0x28, 0x05, 0x52, 0x06, 0x69, 0x64, 0x49, 0x74,
-	0x65, 0x6d, 0x12, 0x1b, 0x0a, 0x09, 0x6e, 0x61, 0x6d, 0x61, 0x5f, 0x69, 0x74, 0x65, 0x6d, 0x18,
-	0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x08, 0x6e, 0x61, 0x6d, 0x61, 0x49, 0x74, 0x65, 0x6d, 0x12,
-	0x16, 0x0a, 0x06, 0x6a, 0x75, 0x6d, 0x6c, 0x61, 0x68, 0x18, 0x03, 0x20, 0x01, 0x28, 0x05, 0x52,
-	0x06, 0x6a, 0x75, 0x6d, 0x6c, 0x61, 0x68, 0x12, 0x1a, 0x0a, 0x08, 0x6b, 0x61, 0x74, 0x65, 0x67,
-	0x6f, 0x72, 0x69, 0x18, 0x04, 0x20, 0x01, 0x28, 0x05, 0x52, 0x08, 0x6b, 0x61, 0x74, 0x65, 0x67,
-	0x6f, 0x72, 0x69, 0x22, 0x7a, 0x0a, 0x04, 0x55, 0x73, 0x65, 0x72, 0x12, 0x17, 0x0a, 0x07, 0x69,
-	0x64, 0x5f, 0x69, 0x74, 0x65, 0x6d, 0x18, 0x01, 0x20, 0x01, 0x28, 0x05, 0x52, 0x06, 0x69, 0x64,
-	0x49, 0x74, 0x65, 0x6d, 0x12, 0x21, 0x0a, 0x0c, 0x6e, 0x61, 0x6d, 0x61, 0x5f, 0x6c, 0x65, 0x6e,
-	0x67, 0x6b, 0x61, 0x70, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0b, 0x6e, 0x61, 0x6d, 0x61,
-	0x4c, 0x65, 0x6e, 0x67, 0x6b, 0x61, 0x70, 0x12, 0x1a, 0x0a, 0x08, 0x75, 0x73, 0x65, 0x72, 0x6e,
-	0x61, 0x6d, 0x65, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x08, 0x75, 0x73, 0x65, 0x72, 0x6e,
-	0x61, 0x6d, 0x65, 0x12, 0x1a, 0x0a, 0x08, 0x70, 0x61, 0x73, 0x73, 0x77, 0x6f, 0x72, 0x64, 0x18,
-	0x04, 0x20, 0x01, 0x28, 0x09, 0x52, 0x08, 0x70, 0x61, 0x73, 0x73, 0x77, 0x6f, 0x72, 0x64, 0x22,
-	0x50, 0x0a, 0x08, 0x4b, 0x61, 0x74, 0x65, 0x67, 0x6f, 0x72, 0x69, 0x12, 0x1f, 0x0a, 0x0b, 0x69,
-	0x64, 0x5f, 0x6b, 0x61, 0x74, 0x65, 0x67, 0x6f, 0x72, 0x69, 0x18, 0x01, 0x20, 0x01, 0x28, 0x05,
-	0x52, 0x0a, 0x69, 0x64, 0x4b, 0x61, 0x74, 0x65, 0x67, 0x6f, 0x72, 0x69, 0x12, 0x23, 0x0a, 0x0d,
-	0x6e, 0x61, 0x6d, 0x61, 0x5f, 0x6b, 0x61, 0x74, 0x65, 0x67, 0x6f, 0x72, 0x69, 0x18, 0x02, 0x20,
-	0x01, 0x28, 0x09, 0x52, 0x0c, 0x6e, 0x61, 0x6d, 0x61, 0x4b, 0x61, 0x74, 0x65, 0x67, 0x6f, 0x72,
-	0x69, 0x22, 0x33, 0x0a, 0x08, 0x55, 0x73, 0x65, 0x72, 0x4c, 0x69, 0x73, 0x74, 0x12, 0x27, 0x0a,
-	0x08, 0x49, 0x74, 0x65, 0x6d, 0x4c, 0x69, 0x73, 0x74, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32,
-	0x0b, 0x2e, 0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x2e, 0x49, 0x74, 0x65, 0x6d, 0x52, 0x08, 0x49, 0x74,
-	0x65, 0x6d, 0x4c, 0x69, 0x73, 0x74, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x6c, 0x22, 0x07, 0x0a, 0x05, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x22, 0x89, 0x01, 0x0a, 0x04, 0x49,
+	0x74, 0x65, 0x6d, 0x12, 0x17, 0x0a, 0x07, 0x69, 0x64, 0x5f, 0x69, 0x74, 0x65, 0x6d, 0x18, 0x01,
+	0x20, 0x01, 0x28, 0x05, 0x52, 0x06, 0x69, 0x64, 0x49, 0x74, 0x65, 0x6d, 0x12, 0x1b, 0x0a, 0x09,
+	0x6e, 0x61, 0x6d, 0x61, 0x5f, 0x69, 0x74, 0x65, 0x6d, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52,
+	0x08, 0x6e, 0x61, 0x6d, 0x61, 0x49, 0x74, 0x65, 0x6d, 0x12, 0x16, 0x0a, 0x06, 0x6a, 0x75, 0x6d,
+	0x6c, 0x61, 0x68, 0x18, 0x03, 0x20, 0x01, 0x28, 0x05, 0x52, 0x06, 0x6a, 0x75, 0x6d, 0x6c, 0x61,
+	0x68, 0x12, 0x1a, 0x0a, 0x08, 0x6b, 0x61, 0x74, 0x65, 0x67, 0x6f, 0x72, 0x69, 0x18, 0x04, 0x20,
+	0x01, 0x28, 0x05, 0x52, 0x08, 0x6b, 0x61, 0x74, 0x65, 0x67, 0x6f, 0x72, 0x69, 0x12, 0x17, 0x0a,
+	0x07, 0x69, 0x64, 0x5f, 0x75, 0x73, 0x65, 0x72, 0x18, 0x05, 0x20, 0x01, 0x28, 0x05, 0x52, 0x06,
+	0x69, 0x64, 0x55, 0x73, 0x65, 0x72, 0x22, 0x7a, 0x0a, 0x04, 0x55, 0x73, 0x65, 0x72, 0x12, 0x17,
+	0x0a, 0x07, 0x69, 0x64, 0x5f, 0x75, 0x73, 0x65, 0x72, 0x18, 0x01, 0x20, 0x01, 0x28, 0x05, 0x52,
+	0x06, 0x69, 0x64, 0x55, 0x73, 0x65, 0x72, 0x12, 0x21, 0x0a, 0x0c, 0x6e, 0x61, 0x6d, 0x61, 0x5f,
+	0x6c, 0x65, 0x6e, 0x67, 0x6b, 0x61, 0x70, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0b, 0x6e,
+	0x61, 0x6d, 0x61, 0x4c, 0x65, 0x6e, 0x67, 0x6b, 0x61, 0x70, 0x12, 0x1a, 0x0a, 0x08, 0x75, 0x73,
+	0x65, 0x72, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x08, 0x75, 0x73,
+	0x65, 0x72, 0x6e, 0x61, 0x6d, 0x65, 0x12, 0x1a, 0x0a, 0x08, 0x70, 0x61, 0x73, 0x73, 0x77, 0x6f,
+	0x72, 0x64, 0x18, 0x04, 0x20, 0x01, 0x28, 0x09, 0x52, 0x08, 0x70, 0x61, 0x73, 0x73, 0x77, 0x6f,
+	0x72, 0x64, 0x22, 0x50, 0x0a, 0x08, 0x4b, 0x61, 0x74, 0x65, 0x67, 0x6f, 0x72, 0x69, 0x12, 0x1f,
+	0x0a, 0x0b, 0x69, 0x64, 0x5f, 0x6b, 0x61, 0x74, 0x65, 0x67, 0x6f, 0x72, 0x69, 0x18, 0x01, 0x20,
+	0x01, 0x28, 0x05, 0x52, 0x0a, 0x69, 0x64, 0x4b, 0x61, 0x74, 0x65, 0x67, 0x6f, 0x72, 0x69, 0x12,
+	0x23, 0x0a, 0x0d, 0x6e, 0x61, 0x6d, 0x61, 0x5f, 0x6b, 0x61, 0x74, 0x65, 0x67, 0x6f, 0x72, 0x69,
+	0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0c, 0x6e, 0x61, 0x6d, 0x61, 0x4b, 0x61, 0x74, 0x65,
+	0x67, 0x6f, 0x72, 0x69, 0x22, 0x33, 0x0a, 0x08, 0x55, 0x73, 0x65, 0x72, 0x4c, 0x69, 0x73, 0x74,
+	0x12, 0x27, 0x0a, 0x08, 0x55, 0x73, 0x65, 0x72, 0x4c, 0x69, 0x73, 0x74, 0x18, 0x01, 0x20, 0x03,
+	0x28, 0x0b, 0x32, 0x0b, 0x2e, 0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x2e, 0x55, 0x73, 0x65, 0x72, 0x52,
+	0x08, 0x55, 0x73, 0x65, 0x72, 0x4c, 0x69, 0x73, 0x74, 0x22, 0x33, 0x0a, 0x08, 0x49, 0x74, 0x65,
+	0x6d, 0x4c, 0x69, 0x73, 0x74, 0x12, 0x27, 0x0a, 0x08, 0x49, 0x74, 0x65, 0x6d, 0x4c, 0x69, 0x73,
+	0x74, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x0b, 0x2e, 0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x2e,
+	0x49, 0x74, 0x65, 0x6d, 0x52, 0x08, 0x49, 0x74, 0x65, 0x6d, 0x4c, 0x69, 0x73, 0x74, 0x22, 0x43,
+	0x0a, 0x0c, 0x4b, 0x61, 0x74, 0x65, 0x67, 0x6f, 0x72, 0x69, 0x4c, 0x69, 0x73, 0x74, 0x12, 0x33,
+	0x0a, 0x0c, 0x4b, 0x61, 0x74, 0x65, 0x67, 0x6f, 0x72, 0x69, 0x4c, 0x69, 0x73, 0x74, 0x18, 0x01,
+	0x20, 0x03, 0x28, 0x0b, 0x32, 0x0f, 0x2e, 0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x2e, 0x4b, 0x61, 0x74,
+	0x65, 0x67, 0x6f, 0x72, 0x69, 0x52, 0x0c, 0x4b, 0x61, 0x74, 0x65, 0x67, 0x6f, 0x72, 0x69, 0x4c,
+	0x69, 0x73, 0x74, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -312,20 +462,25 @@ func file_app_model_database_proto_rawDescGZIP() []byte {
 	return file_app_model_database_proto_rawDescData
 }
 
-var file_app_model_database_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
+var file_app_model_database_proto_msgTypes = make([]protoimpl.MessageInfo, 7)
 var file_app_model_database_proto_goTypes = []interface{}{
-	(*Item)(nil),     // 0: model.Item
-	(*User)(nil),     // 1: model.User
-	(*Kategori)(nil), // 2: model.Kategori
-	(*UserList)(nil), // 3: model.UserList
+	(*Empty)(nil),        // 0: model.Empty
+	(*Item)(nil),         // 1: model.Item
+	(*User)(nil),         // 2: model.User
+	(*Kategori)(nil),     // 3: model.Kategori
+	(*UserList)(nil),     // 4: model.UserList
+	(*ItemList)(nil),     // 5: model.ItemList
+	(*KategoriList)(nil), // 6: model.KategoriList
 }
 var file_app_model_database_proto_depIdxs = []int32{
-	0, // 0: model.UserList.ItemList:type_name -> model.Item
-	1, // [1:1] is the sub-list for method output_type
-	1, // [1:1] is the sub-list for method input_type
-	1, // [1:1] is the sub-list for extension type_name
-	1, // [1:1] is the sub-list for extension extendee
-	0, // [0:1] is the sub-list for field type_name
+	2, // 0: model.UserList.UserList:type_name -> model.User
+	1, // 1: model.ItemList.ItemList:type_name -> model.Item
+	3, // 2: model.KategoriList.KategoriList:type_name -> model.Kategori
+	3, // [3:3] is the sub-list for method output_type
+	3, // [3:3] is the sub-list for method input_type
+	3, // [3:3] is the sub-list for extension type_name
+	3, // [3:3] is the sub-list for extension extendee
+	0, // [0:3] is the sub-list for field type_name
 }
 
 func init() { file_app_model_database_proto_init() }
@@ -335,7 +490,7 @@ func file_app_model_database_proto_init() {
 	}
 	if !protoimpl.UnsafeEnabled {
 		file_app_model_database_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*Item); i {
+			switch v := v.(*Empty); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -347,7 +502,7 @@ func file_app_model_database_proto_init() {
 			}
 		}
 		file_app_model_database_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*User); i {
+			switch v := v.(*Item); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -359,7 +514,7 @@ func file_app_model_database_proto_init() {
 			}
 		}
 		file_app_model_database_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*Kategori); i {
+			switch v := v.(*User); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -371,7 +526,43 @@ func file_app_model_database_proto_init() {
 			}
 		}
 		file_app_model_database_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*Kategori); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_app_model_database_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*UserList); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_app_model_database_proto_msgTypes[5].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*ItemList); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_app_model_database_proto_msgTypes[6].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*KategoriList); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -389,7 +580,7 @@ func file_app_model_database_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_app_model_database_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   4,
+			NumMessages:   7,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

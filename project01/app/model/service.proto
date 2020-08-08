@@ -1,9 +1,19 @@
 syntax = "proto3";
 
 package model;
-import "google/protobuf/Empty.proto";
 import "app/model/database.proto";
 
 service Inventory {
-  rpc ShowAll(google.protobuf.Empty) returns (Item) {}
+  rpc AddItem(Item) returns (Empty) {}
+  // rpc GetItem(Item) returns (Item) {}
+  // rpc Show(Item) returns (Item) {}
+  rpc ShowAll(Empty) returns (ItemList) {}
+  //
+  // rpc Register(User) returns (Empty) {}
+  // rpc Login(User) returns (Empty) {}
+  //
+  // rpc AddKategori(Kategori) returns (Empty) {}
+  // rpc EditKategori(Kategori) returns (Empty) {}
+  // rpc DeleteKategori(Kategori) returns (Empty) {}
+  // rpc ShowKategori(Empty) returns (KategoriList) {}
 }
