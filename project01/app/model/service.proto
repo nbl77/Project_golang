@@ -9,11 +9,11 @@ service Inventory {
   rpc Show(Item) returns (Item) {}
   rpc ShowAll(Empty) returns (ItemList) {}
 
-  rpc Register(User) returns (Status) {}
-  rpc Login(User) returns (Status) {}
-
-  rpc AddKategori(Kategori) returns (Status) {}
-  rpc EditKategori(Kategori) returns (Status) {}
-  rpc DeleteKategori(Kategori) returns (Status) {}
-  rpc ShowKategori(Empty) returns (KategoriList) {}
+  // rpc Register(User) returns (Status) {}
+  // rpc Login(User) returns (Status) {}
+  //
+  // rpc AddKategori(Kategori) returns (Status) {}
+  // rpc EditKategori(Kategori) returns (Status) {}
+  // rpc DeleteKategori(Kategori) returns (Status) {}
+  // rpc ShowKategori(Empty) returns (KategoriList) {}
 }

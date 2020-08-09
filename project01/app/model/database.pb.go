@@ -409,6 +409,61 @@ func (x *KategoriList) GetKategoriList() []*Kategori {
 	return nil
 }
 
+type Status struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Status  int32  `protobuf:"varint,1,opt,name=status,proto3" json:"status,omitempty"`
+	Message string `protobuf:"bytes,2,opt,name=message,proto3" json:"message,omitempty"`
+}
+
+func (x *Status) Reset() {
+	*x = Status{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_app_model_database_proto_msgTypes[7]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *Status) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Status) ProtoMessage() {}
+
+func (x *Status) ProtoReflect() protoreflect.Message {
+	mi := &file_app_model_database_proto_msgTypes[7]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Status.ProtoReflect.Descriptor instead.
+func (*Status) Descriptor() ([]byte, []int) {
+	return file_app_model_database_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *Status) GetStatus() int32 {
+	if x != nil {
+		return x.Status
+	}
+	return 0
+}
+
+func (x *Status) GetMessage() string {
+	if x != nil {
+		return x.Message
+	}
+	return ""
+}
+
 var File_app_model_database_proto protoreflect.FileDescriptor
 
 var file_app_model_database_proto_rawDesc = []byte{
@@ -447,7 +502,11 @@ var file_app_model_database_proto_rawDesc = []byte{
 	0x0a, 0x0c, 0x4b, 0x61, 0x74, 0x65, 0x67, 0x6f, 0x72, 0x69, 0x4c, 0x69, 0x73, 0x74, 0x18, 0x01,
 	0x20, 0x03, 0x28, 0x0b, 0x32, 0x0f, 0x2e, 0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x2e, 0x4b, 0x61, 0x74,
 	0x65, 0x67, 0x6f, 0x72, 0x69, 0x52, 0x0c, 0x4b, 0x61, 0x74, 0x65, 0x67, 0x6f, 0x72, 0x69, 0x4c,
-	0x69, 0x73, 0x74, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x69, 0x73, 0x74, 0x22, 0x3a, 0x0a, 0x06, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x12, 0x16, 0x0a,
+	0x06, 0x73, 0x74, 0x61, 0x74, 0x75, 0x73, 0x18, 0x01, 0x20, 0x01, 0x28, 0x05, 0x52, 0x06, 0x73,
+	0x74, 0x61, 0x74, 0x75, 0x73, 0x12, 0x18, 0x0a, 0x07, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65,
+	0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x07, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x62,
+	0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -462,7 +521,7 @@ func file_app_model_database_proto_rawDescGZIP() []byte {
 	return file_app_model_database_proto_rawDescData
 }
 
-var file_app_model_database_proto_msgTypes = make([]protoimpl.MessageInfo, 7)
+var file_app_model_database_proto_msgTypes = make([]protoimpl.MessageInfo, 8)
 var file_app_model_database_proto_goTypes = []interface{}{
 	(*Empty)(nil),        // 0: model.Empty
 	(*Item)(nil),         // 1: model.Item
@@ -471,6 +530,7 @@ var file_app_model_database_proto_goTypes = []interface{}{
 	(*UserList)(nil),     // 4: model.UserList
 	(*ItemList)(nil),     // 5: model.ItemList
 	(*KategoriList)(nil), // 6: model.KategoriList
+	(*Status)(nil),       // 7: model.Status
 }
 var file_app_model_database_proto_depIdxs = []int32{
 	2, // 0: model.UserList.UserList:type_name -> model.User
@@ -573,6 +633,18 @@ func file_app_model_database_proto_init() {
 				return nil
 			}
 		}
+		file_app_model_database_proto_msgTypes[7].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*Status); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
@@ -580,7 +652,7 @@ func file_app_model_database_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_app_model_database_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   7,
+			NumMessages:   8,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

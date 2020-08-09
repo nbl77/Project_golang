@@ -3,6 +3,7 @@ package service
 import (
   "context"
   "project01/app/model"
+  "project01/app/config"
 )
 
 var Inventory *model.Item
@@ -15,9 +16,8 @@ func init()  {
   InventoryList.ItemList = make([]*model.Item, 0)
 }
 
-type ServiceItem struct{}
 
-func (ServiceItem) AddItem(ctx context.Context, item *model.Item) (*model.Status, error) {
+func (*config.Service) AddItem(ctx context.Context, item *model.Item) (*model.Status, error) {
   items := &model.Item{
     IdItem : 1,
     NamaItem : "Komputer",
@@ -25,9 +25,9 @@ func (ServiceItem) AddItem(ctx context.Context, item *model.Item) (*model.Status
     Kategori : 5,
   }
   InventoryList.ItemList = append(InventoryList.ItemList, items)
-  return new(model.Empty), nil
+  return new(model.Status), nil
 }
 
-func (ServiceItem) ShowAll(ctx context.Context, empty *model.Empty) (*model.ItemList, error) {
+func (Service) ShowAll(ctx context.Context, empty *model.Empty) (*model.ItemList, error) {
   return InventoryList, nil
 }
