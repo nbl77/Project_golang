@@ -27,12 +27,12 @@ func (ServiceUser) Register(ctx context.Context, user *model.User) (*model.Statu
     }
   }
 
-  userRegex,_ := regexp.MatchString(`^(?=.*[0-9])(?=.*[a-z]).{8,}$`,user.Username)
-  passwordRegex,_ := regexp.MatchString(`^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{10,}$`,user.Password)
+  userRegex,_ := regexp.MatchString(`^\w.{8,}$`,user.Username)
+  passwordRegex,_ := regexp.MatchString(`[\w].{10,}$`,user.Password)
   if !userRegex {
     status = &model.Status{
       Status : 400,
-      Message : "Username Minimal 8 karakter dan 1 angka",
+      Message : "Username Minimal 8 karakter",
     }
     return status, nil
   }
@@ -40,7 +40,7 @@ func (ServiceUser) Register(ctx context.Context, user *model.User) (*model.Statu
   if !passwordRegex {
     status = &model.Status{
       Status : 400,
-      Message : "Password Minimal 10 karakter, 1 Kapital dan 1 angka",
+      Message : "Password Minimal 10 karakter",
     }
     return status, nil
   }
