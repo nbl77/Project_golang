@@ -35,3 +35,8 @@ message ItemList{
 message KategoriList{
   repeated Kategori KategoriList = 1;
 }
+
+message Status{
+  int32 status = 1;
+  string message = 2;
+}

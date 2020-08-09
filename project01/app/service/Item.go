@@ -17,7 +17,7 @@ func init()  {
 
 type ServiceItem struct{}
 
-func (ServiceItem) AddItem(ctx context.Context, item *model.Item) (*model.Empty, error) {
+func (ServiceItem) AddItem(ctx context.Context, item *model.Item) (*model.Status, error) {
   items := &model.Item{
     IdItem : 1,
     NamaItem : "Komputer",
