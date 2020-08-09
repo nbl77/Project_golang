@@ -4,13 +4,14 @@ package model;
 import "app/model/database.proto";
 
 service Inventory {
-  rpc AddItem(Item) returns (Status) {}
-  rpc GetItem(Item) returns (Item) {}
-  rpc Show(Item) returns (Item) {}
-  rpc ShowAll(Empty) returns (ItemList) {}
+  // rpc AddItem(Item) returns (Status) {}
+  // rpc GetItem(Item) returns (Item) {}
+  // rpc Show(Item) returns (Item) {}
+  // rpc ShowAll(Empty) returns (ItemList) {}
 
-  // rpc Register(User) returns (Status) {}
-  // rpc Login(User) returns (Status) {}
+  rpc Register(User) returns (Status) {}
+  rpc ShowUser(Empty) returns (UserList) {}
+  rpc Login(User) returns (Status) {}
   //
   // rpc AddKategori(Kategori) returns (Status) {}
   // rpc EditKategori(Kategori) returns (Status) {}
