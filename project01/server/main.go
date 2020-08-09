@@ -4,15 +4,18 @@ import (
   "net"
   "log"
   "google.golang.org/grpc"
-  "project01/app/model"
   "project01/app/config"
   "project01/app/service"
+  "project01/app/model"
 )
 
 func main()  {
-  var serviceU service.ServiceUser
   srv := grpc.NewServer()
-  model.RegisterInventoryServer(srv, serviceU)
+  var service *service.Service
+  model.RegisterInventoryServer(srv, service)
+  // service.ConnectUser(srv)
+  // service.ConnectItem(srv)
+  // service.NyambunginItem()
   log.Println("Starting RPC Server at ", config.SERVER_PORT)
   l, err := net.Listen("tcp",config.SERVER_PORT)
   if err != nil {

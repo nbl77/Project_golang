@@ -5,3 +5,4 @@ const (
 )
 var Status = false
 var IdUser int32 = 0
+// type ServiceUser struct {}

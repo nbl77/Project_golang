@@ -9,14 +9,21 @@ import (
 var storageUserList *model.UserList
 var session *model.Session
 
-type ServiceUser struct {}
+type Service struct {
+}
+
+
+// func ConnectUser(srv *grpc.Server){
+//   var service *Service
+//   model.RegisterInventoryServer(srv, service)
+// }
 
 func init()  {
   storageUserList = new(model.UserList)
   session = new(model.Session)
   storageUserList.UserList = make([]*model.User, 0)
 }
-func (ServiceUser) Register(ctx context.Context, user *model.User) (*model.Status, error) {
+func (*Service) Register(ctx context.Context, user *model.User) (*model.Status, error) {
   cek := true
   user.IdUser = int32(len(storageUserList.UserList))
   status := new(model.Status)
@@ -27,8 +34,8 @@ func (ServiceUser) Register(ctx context.Context, user *model.User) (*model.Statu
     }
   }
 
-  userRegex,_ := regexp.MatchString(`^\w.{8,}$`,user.Username)
-  passwordRegex,_ := regexp.MatchString(`[\w].{10,}$`,user.Password)
+  userRegex,_ := regexp.MatchString(`^\w.{7,}$`,user.Username)
+  passwordRegex,_ := regexp.MatchString(`[\w].{9,}$`,user.Password)
   if !userRegex {
     status = &model.Status{
       Status : 400,
@@ -81,10 +88,10 @@ func (ServiceUser) Register(ctx context.Context, user *model.User) (*model.Statu
   log.Println("Success Registered!")
   return status, nil
 }
-func (ServiceUser) ShowUser(ctx context.Context, empty *model.Empty) (*model.UserList, error) {
+func (*Service) ShowUser(ctx context.Context, empty *model.Empty) (*model.UserList, error) {
   return storageUserList,nil
 }
-func (ServiceUser) Login(ctx context.Context, user *model.User) (*model.Status, error){
+func (*Service) Login(ctx context.Context, user *model.User) (*model.Status, error){
   status := new(model.Status)
   login := false
   for _, val:=range storageUserList.UserList{
@@ -103,7 +110,7 @@ func (ServiceUser) Login(ctx context.Context, user *model.User) (*model.Status, 
         Status : 200,
         Message : "Berhasil Login",
       }
-      log.Println("Success Registered!")
+      log.Println("Success Login!")
     }
     return status, nil
   }

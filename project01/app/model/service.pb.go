@@ -34,33 +34,53 @@ var file_app_model_service_proto_rawDesc = []byte{
 	0x0a, 0x17, 0x61, 0x70, 0x70, 0x2f, 0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x2f, 0x73, 0x65, 0x72, 0x76,
 	0x69, 0x63, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x12, 0x05, 0x6d, 0x6f, 0x64, 0x65, 0x6c,
 	0x1a, 0x18, 0x61, 0x70, 0x70, 0x2f, 0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x2f, 0x64, 0x61, 0x74, 0x61,
-	0x62, 0x61, 0x73, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x32, 0x89, 0x01, 0x0a, 0x09, 0x49,
-	0x6e, 0x76, 0x65, 0x6e, 0x74, 0x6f, 0x72, 0x79, 0x12, 0x28, 0x0a, 0x08, 0x52, 0x65, 0x67, 0x69,
-	0x73, 0x74, 0x65, 0x72, 0x12, 0x0b, 0x2e, 0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x2e, 0x55, 0x73, 0x65,
-	0x72, 0x1a, 0x0d, 0x2e, 0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x2e, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73,
-	0x22, 0x00, 0x12, 0x2b, 0x0a, 0x08, 0x53, 0x68, 0x6f, 0x77, 0x55, 0x73, 0x65, 0x72, 0x12, 0x0c,
-	0x2e, 0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x2e, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x1a, 0x0f, 0x2e, 0x6d,
-	0x6f, 0x64, 0x65, 0x6c, 0x2e, 0x55, 0x73, 0x65, 0x72, 0x4c, 0x69, 0x73, 0x74, 0x22, 0x00, 0x12,
-	0x25, 0x0a, 0x05, 0x4c, 0x6f, 0x67, 0x69, 0x6e, 0x12, 0x0b, 0x2e, 0x6d, 0x6f, 0x64, 0x65, 0x6c,
-	0x2e, 0x55, 0x73, 0x65, 0x72, 0x1a, 0x0d, 0x2e, 0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x2e, 0x53, 0x74,
-	0x61, 0x74, 0x75, 0x73, 0x22, 0x00, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x62, 0x61, 0x73, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x32, 0xa8, 0x02, 0x0a, 0x09, 0x49,
+	0x6e, 0x76, 0x65, 0x6e, 0x74, 0x6f, 0x72, 0x79, 0x12, 0x27, 0x0a, 0x07, 0x41, 0x64, 0x64, 0x49,
+	0x74, 0x65, 0x6d, 0x12, 0x0b, 0x2e, 0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x2e, 0x49, 0x74, 0x65, 0x6d,
+	0x1a, 0x0d, 0x2e, 0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x2e, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x22,
+	0x00, 0x12, 0x25, 0x0a, 0x07, 0x47, 0x65, 0x74, 0x49, 0x74, 0x65, 0x6d, 0x12, 0x0b, 0x2e, 0x6d,
+	0x6f, 0x64, 0x65, 0x6c, 0x2e, 0x49, 0x74, 0x65, 0x6d, 0x1a, 0x0b, 0x2e, 0x6d, 0x6f, 0x64, 0x65,
+	0x6c, 0x2e, 0x49, 0x74, 0x65, 0x6d, 0x22, 0x00, 0x12, 0x22, 0x0a, 0x04, 0x53, 0x68, 0x6f, 0x77,
+	0x12, 0x0b, 0x2e, 0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x2e, 0x49, 0x74, 0x65, 0x6d, 0x1a, 0x0b, 0x2e,
+	0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x2e, 0x49, 0x74, 0x65, 0x6d, 0x22, 0x00, 0x12, 0x29, 0x0a, 0x07,
+	0x53, 0x68, 0x6f, 0x77, 0x41, 0x6c, 0x6c, 0x12, 0x0b, 0x2e, 0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x2e,
+	0x49, 0x74, 0x65, 0x6d, 0x1a, 0x0f, 0x2e, 0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x2e, 0x49, 0x74, 0x65,
+	0x6d, 0x4c, 0x69, 0x73, 0x74, 0x22, 0x00, 0x12, 0x28, 0x0a, 0x08, 0x52, 0x65, 0x67, 0x69, 0x73,
+	0x74, 0x65, 0x72, 0x12, 0x0b, 0x2e, 0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x2e, 0x55, 0x73, 0x65, 0x72,
+	0x1a, 0x0d, 0x2e, 0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x2e, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x22,
+	0x00, 0x12, 0x2b, 0x0a, 0x08, 0x53, 0x68, 0x6f, 0x77, 0x55, 0x73, 0x65, 0x72, 0x12, 0x0c, 0x2e,
+	0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x2e, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x1a, 0x0f, 0x2e, 0x6d, 0x6f,
+	0x64, 0x65, 0x6c, 0x2e, 0x55, 0x73, 0x65, 0x72, 0x4c, 0x69, 0x73, 0x74, 0x22, 0x00, 0x12, 0x25,
+	0x0a, 0x05, 0x4c, 0x6f, 0x67, 0x69, 0x6e, 0x12, 0x0b, 0x2e, 0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x2e,
+	0x55, 0x73, 0x65, 0x72, 0x1a, 0x0d, 0x2e, 0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x2e, 0x53, 0x74, 0x61,
+	0x74, 0x75, 0x73, 0x22, 0x00, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var file_app_model_service_proto_goTypes = []interface{}{
-	(*User)(nil),     // 0: model.User
-	(*Empty)(nil),    // 1: model.Empty
-	(*Status)(nil),   // 2: model.Status
-	(*UserList)(nil), // 3: model.UserList
+	(*Item)(nil),     // 0: model.Item
+	(*User)(nil),     // 1: model.User
+	(*Empty)(nil),    // 2: model.Empty
+	(*Status)(nil),   // 3: model.Status
+	(*ItemList)(nil), // 4: model.ItemList
+	(*UserList)(nil), // 5: model.UserList
 }
 var file_app_model_service_proto_depIdxs = []int32{
-	0, // 0: model.Inventory.Register:input_type -> model.User
-	1, // 1: model.Inventory.ShowUser:input_type -> model.Empty
-	0, // 2: model.Inventory.Login:input_type -> model.User
-	2, // 3: model.Inventory.Register:output_type -> model.Status
-	3, // 4: model.Inventory.ShowUser:output_type -> model.UserList
-	2, // 5: model.Inventory.Login:output_type -> model.Status
-	3, // [3:6] is the sub-list for method output_type
-	0, // [0:3] is the sub-list for method input_type
+	0, // 0: model.Inventory.AddItem:input_type -> model.Item
+	0, // 1: model.Inventory.GetItem:input_type -> model.Item
+	0, // 2: model.Inventory.Show:input_type -> model.Item
+	0, // 3: model.Inventory.ShowAll:input_type -> model.Item
+	1, // 4: model.Inventory.Register:input_type -> model.User
+	2, // 5: model.Inventory.ShowUser:input_type -> model.Empty
+	1, // 6: model.Inventory.Login:input_type -> model.User
+	3, // 7: model.Inventory.AddItem:output_type -> model.Status
+	0, // 8: model.Inventory.GetItem:output_type -> model.Item
+	0, // 9: model.Inventory.Show:output_type -> model.Item
+	4, // 10: model.Inventory.ShowAll:output_type -> model.ItemList
+	3, // 11: model.Inventory.Register:output_type -> model.Status
+	5, // 12: model.Inventory.ShowUser:output_type -> model.UserList
+	3, // 13: model.Inventory.Login:output_type -> model.Status
+	7, // [7:14] is the sub-list for method output_type
+	0, // [0:7] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name
 	0, // [0:0] is the sub-list for extension extendee
 	0, // [0:0] is the sub-list for field type_name
@@ -103,6 +123,10 @@ const _ = grpc.SupportPackageIsVersion6
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type InventoryClient interface {
+	AddItem(ctx context.Context, in *Item, opts ...grpc.CallOption) (*Status, error)
+	GetItem(ctx context.Context, in *Item, opts ...grpc.CallOption) (*Item, error)
+	Show(ctx context.Context, in *Item, opts ...grpc.CallOption) (*Item, error)
+	ShowAll(ctx context.Context, in *Item, opts ...grpc.CallOption) (*ItemList, error)
 	Register(ctx context.Context, in *User, opts ...grpc.CallOption) (*Status, error)
 	ShowUser(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*UserList, error)
 	Login(ctx context.Context, in *User, opts ...grpc.CallOption) (*Status, error)
@@ -114,6 +138,42 @@ type inventoryClient struct {
 
 func NewInventoryClient(cc grpc.ClientConnInterface) InventoryClient {
 	return &inventoryClient{cc}
+}
+
+func (c *inventoryClient) AddItem(ctx context.Context, in *Item, opts ...grpc.CallOption) (*Status, error) {
+	out := new(Status)
+	err := c.cc.Invoke(ctx, "/model.Inventory/AddItem", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *inventoryClient) GetItem(ctx context.Context, in *Item, opts ...grpc.CallOption) (*Item, error) {
+	out := new(Item)
+	err := c.cc.Invoke(ctx, "/model.Inventory/GetItem", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *inventoryClient) Show(ctx context.Context, in *Item, opts ...grpc.CallOption) (*Item, error) {
+	out := new(Item)
+	err := c.cc.Invoke(ctx, "/model.Inventory/Show", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *inventoryClient) ShowAll(ctx context.Context, in *Item, opts ...grpc.CallOption) (*ItemList, error) {
+	out := new(ItemList)
+	err := c.cc.Invoke(ctx, "/model.Inventory/ShowAll", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
 }
 
 func (c *inventoryClient) Register(ctx context.Context, in *User, opts ...grpc.CallOption) (*Status, error) {
@@ -145,6 +205,10 @@ func (c *inventoryClient) Login(ctx context.Context, in *User, opts ...grpc.Call
 
 // InventoryServer is the server API for Inventory service.
 type InventoryServer interface {
+	AddItem(context.Context, *Item) (*Status, error)
+	GetItem(context.Context, *Item) (*Item, error)
+	Show(context.Context, *Item) (*Item, error)
+	ShowAll(context.Context, *Item) (*ItemList, error)
 	Register(context.Context, *User) (*Status, error)
 	ShowUser(context.Context, *Empty) (*UserList, error)
 	Login(context.Context, *User) (*Status, error)
@@ -154,6 +218,18 @@ type InventoryServer interface {
 type UnimplementedInventoryServer struct {
 }
 
+func (*UnimplementedInventoryServer) AddItem(context.Context, *Item) (*Status, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AddItem not implemented")
+}
+func (*UnimplementedInventoryServer) GetItem(context.Context, *Item) (*Item, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetItem not implemented")
+}
+func (*UnimplementedInventoryServer) Show(context.Context, *Item) (*Item, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Show not implemented")
+}
+func (*UnimplementedInventoryServer) ShowAll(context.Context, *Item) (*ItemList, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ShowAll not implemented")
+}
 func (*UnimplementedInventoryServer) Register(context.Context, *User) (*Status, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Register not implemented")
 }
@@ -166,6 +242,78 @@ func (*UnimplementedInventoryServer) Login(context.Context, *User) (*Status, err
 
 func RegisterInventoryServer(s *grpc.Server, srv InventoryServer) {
 	s.RegisterService(&_Inventory_serviceDesc, srv)
+}
+
+func _Inventory_AddItem_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(Item)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(InventoryServer).AddItem(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/model.Inventory/AddItem",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(InventoryServer).AddItem(ctx, req.(*Item))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Inventory_GetItem_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(Item)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(InventoryServer).GetItem(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/model.Inventory/GetItem",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(InventoryServer).GetItem(ctx, req.(*Item))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Inventory_Show_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(Item)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(InventoryServer).Show(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/model.Inventory/Show",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(InventoryServer).Show(ctx, req.(*Item))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Inventory_ShowAll_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(Item)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(InventoryServer).ShowAll(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/model.Inventory/ShowAll",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(InventoryServer).ShowAll(ctx, req.(*Item))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
 func _Inventory_Register_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -226,6 +374,22 @@ var _Inventory_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "model.Inventory",
 	HandlerType: (*InventoryServer)(nil),
 	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "AddItem",
+			Handler:    _Inventory_AddItem_Handler,
+		},
+		{
+			MethodName: "GetItem",
+			Handler:    _Inventory_GetItem_Handler,
+		},
+		{
+			MethodName: "Show",
+			Handler:    _Inventory_Show_Handler,
+		},
+		{
+			MethodName: "ShowAll",
+			Handler:    _Inventory_ShowAll_Handler,
+		},
 		{
 			MethodName: "Register",
 			Handler:    _Inventory_Register_Handler,

@@ -30,10 +30,16 @@ func main()  {
       fmt.Println("1.Register")
       fmt.Println("2.Login")
     }else {
-      fmt.Println("1.Logout")
+      fmt.Println("1.Tambah Barang")
+      fmt.Println("2.Ambil Barang")
+      fmt.Println("3.Lihat Barang")
+      fmt.Println("4.Lihat Semua Barang")
+      fmt.Println("5.Logout")
     }
     fmt.Println("99.Exit")
+    key = ""
     fmt.Scanln(&key)
+    fmt.Println(key)
     switch key {
     case "1":
       if !config.Status {
@@ -50,8 +56,9 @@ func main()  {
         fmt.Scanln(&password)
         fmt.Println(Register(conn, namaLengkap, username, password))
       }else {
-        fmt.Println(Logout(conn))
+        addItem(conn)
       }
+      break
     case "2":
       if !config.Status {
         var(
@@ -63,13 +70,125 @@ func main()  {
         fmt.Print("Masukan Password :")
         fmt.Scanln(&password)
         fmt.Println(Login(conn, username, password))
+      }else {
+        ambilItem(conn)
       }
-    case "":
+      break
+    case "3":
+      if config.Status {
+        showPerItem(conn)
+      }
+    case "4":
+      if config.Status {
+        ShowAll(conn)
+      }
+      break
+    case "5":
+      if config.Status {
+        fmt.Println(Logout(conn))
+      }
+      break
     default:
       fmt.Println("Opsi yang anda masukan salah!")
+      break
     }
   }
 
+}
+
+func ambilItem(conn model.InventoryClient){
+  var (
+    idItem int32
+  )
+
+  fmt.Println("Masukkan id item")
+  fmt.Scan(&idItem)
+
+  req:= &model.Item{
+    IdItem: idItem,
+  }
+
+  res,err:= conn.GetItem(context.Background(),req)
+
+  if err != nil {
+    log.Fatalf("Tidak bisa menerima response terkait Get Item", err)
+  }
+
+  fmt.Println("Item Anda adalah ", res)
+}
+
+var ID int32 = 1
+
+func addItem (conn model.InventoryClient) {
+
+  var (
+    idItem int32 = ID
+    namaItem string
+    jumlah int32
+    kategori int32
+    idUser int32 = config.IdUser
+  )
+  ID++
+  // fmt.Println("Masukkan idItem")
+  // fmt.Scan(&idItem)
+
+  fmt.Println("Masukkan nama item")
+  fmt.Scan(&namaItem)
+
+  fmt.Println("Masukkan jumlah")
+  fmt.Scan(&jumlah)
+
+  fmt.Println("Masukkan kategori")
+  fmt.Scan(&kategori)
+
+  req:= &model.Item{
+    IdItem : idItem,
+    NamaItem: namaItem,
+    Jumlah: jumlah,
+    Kategori: kategori,
+    IdUser: idUser,
+  }
+
+  res,err:= conn.AddItem(context.Background(), req)
+
+  if err != nil {
+    log.Fatalf("Tidak bisa menerima response terkait Add item", err)
+  }
+
+  fmt.Println("Status Anda adalah ", res.GetStatus())
+  fmt.Println("Message Anda adalah ", res.GetMessage())
+}
+
+func showPerItem(conn model.InventoryClient){
+  var idItem int32
+
+  fmt.Println("Masukkan id item")
+  fmt.Scan(&idItem)
+
+  req:= &model.Item{
+    IdItem:idItem,
+  }
+
+  res,err := conn.Show(context.Background(),req)
+
+  if err != nil {
+    log.Fatalf("Tidak bisa menerima response terkait Show", err)
+  }
+  fmt.Println("Item yang Anda cari Adalah ", res)
+}
+
+func ShowAll(conn model.InventoryClient) {
+  req:= &model.Item{
+    IdUser : config.IdUser,
+  }
+
+  res, err:= conn.ShowAll(context.Background(), req)
+
+  if err != nil {
+    log.Fatalf("Tidak bisa menerima response terkait Show All", err)
+  }
+
+  fmt.Println("List item Anda adalah ", res)
 }
 
 func Register(conn model.InventoryClient, namaLengkap,username, password string) string {
