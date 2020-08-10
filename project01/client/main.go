@@ -112,6 +112,9 @@ func main()  {
         fmt.Println(service.Logout(conn))
       }
       break
+    case "99":
+      fmt.Println("Terimakasih Telah Menggunakan Layanan Kami. ^_^")
+      break
     default:
       fmt.Println("Opsi yang anda masukan salah!")
       break

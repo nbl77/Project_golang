@@ -29,9 +29,9 @@ func AddKategori(conn model.InventoryClient) {
 	if err != nil {
 		log.Fatalf("Tidak bisa menerima response terkait add Kategori karena error: ", err)
 	}
-
-	fmt.Println("Status Anda adalah ", res.GetStatus())
-	fmt.Println("Message Anda adalah ", res.GetMessage())
+  fmt.Println("----------------------------")
+	fmt.Println(res.GetMessage(),"!!!")
+  fmt.Println("----------------------------")
 }
 
 func EditKategori(conn model.InventoryClient){
@@ -55,9 +55,9 @@ func EditKategori(conn model.InventoryClient){
 	if err != nil {
 		log.Fatalf("Tidak bisa menerima response terkait Edit Kategori dikarenaka karena error ", err)
 	}
-
-	fmt.Println("Status Anda adalah ", res.GetStatus())
-	fmt.Println("Message Anda adalah ", res.GetMessage())
+  fmt.Println("------------------------")
+	fmt.Println(res.GetMessage(),"!!!")
+  fmt.Println("------------------------")
 }
 
 func DeleteKategori(conn model.InventoryClient) {
@@ -77,8 +77,9 @@ func DeleteKategori(conn model.InventoryClient) {
 		log.Fatalf("Tidak bisa menerima response terkait Delete Kategori dikarenakan error ", err)
 	}
 
-	fmt.Println("Status Anda adalah ", res.GetStatus())
-	fmt.Println("Message Anda adalah ", res.GetMessage())
+  fmt.Println("--------------------------")
+	fmt.Println(res.GetMessage())
+  fmt.Println("--------------------------")
 }
 
 func ShowKategori(conn model.InventoryClient) {
@@ -91,11 +92,13 @@ func ShowKategori(conn model.InventoryClient) {
 	if len(res.KategoriList) < 1 {
 		fmt.Println("Belum ada kategori yang disimpan")
 	} else {
-		fmt.Println("Barang yang telah diSimpan: ")
+    fmt.Println("--------------------------------")
+		fmt.Println("Kategori : ")
 		for _,val:= range res.KategoriList {
-			fmt.Println("=======================")
+      fmt.Println("--------------------------------")
 			fmt.Println("Id Kategori: ", val.IdKategori)
 			fmt.Println("Nama Kategori: ", val.NamaKategori)
+      fmt.Println("--------------------------------")
 		}
 	}
 
@@ -118,13 +121,13 @@ func MenuKategori (conn model.InventoryClient) {
 		case 2:
 			EditKategori(conn)
 			break
-		case 3:
-			DeleteKategori(conn)
-			break
-		case 4:
+		// case 3:
+		// 	DeleteKategori(conn)
+		// 	break
+    case 3:
 			ShowKategori(conn)
 			break
-		case 5:
+		case 4:
 			flag = true
 			break
 
@@ -134,11 +137,14 @@ func MenuKategori (conn model.InventoryClient) {
 
 func Menu(){
 	// fmt.Println("0. Menu Kategori")
+  fmt.Println("=====================")
+  fmt.Println("Konfigurasi Kategori :")
+  fmt.Println("=====================")
 	fmt.Println("1. Add Kategori")
 	fmt.Println("2. Edit Kategori")
-	fmt.Println("3. Delete Kategori")
-	fmt.Println("4. Show Kategori")
-	fmt.Println("5. Keluar menu")
+	// fmt.Println("3. Delete Kategori")
+	fmt.Println("3. Show Kategori")
+	fmt.Println("4. Kembali")
 }
 func GetKategori() *model.KategoriList {
   port := config.SERVER_PORT

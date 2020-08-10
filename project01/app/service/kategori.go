@@ -5,7 +5,7 @@ package service
 import (
 	"project01/app/model"
 	"context"
-	"fmt"
+	"log"
 )
 
 var Category *model.Kategori
@@ -19,7 +19,7 @@ func init() {
 	CategoryList.KategoriList = make([]*model.Kategori,0)
   kat := &model.Kategori{
     IdKategori:1,
-    NamaKategori:"Un Kategori",
+    NamaKategori:"UnKategori",
   }
   CategoryList.KategoriList = append(CategoryList.KategoriList, kat)
 }
@@ -44,14 +44,12 @@ func idFilterKategory (idKategori int32) *model.Kategori {
 		} else {
 		  return 2
 		}
-
 	}
 	return 0
   }
 
   func removeKategori (slice []*model.Kategori, s int32) []*model.Kategori {
-	return append(slice[:s], slice[s+1:]...)
-
+		return append(slice[:s], slice[s+1:]...)
   }
 
 
@@ -65,8 +63,8 @@ func(*Service) AddKategori(ctx context.Context, kategori *model.Kategori) (*mode
 		Status:200,
 		Message:"Kategori berhasil disimpan",
 	}
-	fmt.Println("Menambahkan kategori...")
-	fmt.Println("ID Kategori : ", kategori.IdKategori, ", Kategori : ", kategori.NamaKategori)
+	log.Println("Menambahkan kategori...")
+	log.Println("ID Kategori : ", kategori.IdKategori, ", Nama Kategori : ", kategori.NamaKategori)
 
 	return res,nil
 }
@@ -91,7 +89,7 @@ func(*Service) EditKategori(ctx context.Context, kategori *model.Kategori) (*mod
 	if !flag {
 		res = &model.Status {
 			Status: 404,
-			Message: "Barang tidak ada di database",
+			Message: "Data tidak ada di database",
 		}
 			return res, nil
 
@@ -99,10 +97,10 @@ func(*Service) EditKategori(ctx context.Context, kategori *model.Kategori) (*mod
 
 	res = &model.Status {
 		Status: 200,
-		Message: "Barang berhasil di edit",
+		Message: "Kategori berhasil di edit",
 	}
 
-
+	log.Println("Mengedit kategori...")
 	return res, nil
 }
 
@@ -116,7 +114,7 @@ func (*Service) DeleteKategori(ctx context.Context, kategori *model.Kategori) (*
 	if KategoriDariClient == nil {
 		res = &model.Status {
 			Status: 404,
-			Message: "Barang tidak ada di database",
+			Message: "Kategori tidak ada di database",
 		}
 			return res, nil
 
@@ -130,19 +128,15 @@ func (*Service) DeleteKategori(ctx context.Context, kategori *model.Kategori) (*
 			break
 		}
 	}
-
 	CategoryList.KategoriList = removeKategori(CategoryList.KategoriList, flag)
-
-
 	res = &model.Status {
 		Status: 200,
 		Message: "Barang berhasil di edit",
 	}
-
-
 	return res, nil
 }
 
 func (*Service) ShowKategori(ctx context.Context, empty *model.Empty) (*model.KategoriList, error) {
+	log.Println("Menampilkan Kategori")
 	return CategoryList,nil
 }

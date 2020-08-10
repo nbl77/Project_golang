@@ -39,11 +39,15 @@ func ShowUser(conn model.InventoryClient) {
     log.Fatalf(err.Error())
   }
   if len(resp.UserList) < 1 {
+    fmt.Println("--------------------------------")
     fmt.Println("Belum ada user yang mendaftar")
+    fmt.Println("--------------------------------")
   }else {
+    fmt.Println("--------------------------------")
     fmt.Println("User yang telah mendaftar :")
+    fmt.Println("--------------------------------")
     for _,val :=range resp.UserList{
-      fmt.Println("========================")
+      fmt.Println("--------------------------------")
       fmt.Println("ID User :",val.IdUser)
       fmt.Println("Nama User :",val.NamaLengkap)
       fmt.Println("Username :",val.Username)
