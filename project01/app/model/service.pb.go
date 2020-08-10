@@ -34,7 +34,7 @@ var file_app_model_service_proto_rawDesc = []byte{
 	0x0a, 0x17, 0x61, 0x70, 0x70, 0x2f, 0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x2f, 0x73, 0x65, 0x72, 0x76,
 	0x69, 0x63, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x12, 0x05, 0x6d, 0x6f, 0x64, 0x65, 0x6c,
 	0x1a, 0x18, 0x61, 0x70, 0x70, 0x2f, 0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x2f, 0x64, 0x61, 0x74, 0x61,
-	0x62, 0x61, 0x73, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x32, 0xfc, 0x02, 0x0a, 0x09, 0x49,
+	0x62, 0x61, 0x73, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x32, 0xc8, 0x04, 0x0a, 0x09, 0x49,
 	0x6e, 0x76, 0x65, 0x6e, 0x74, 0x6f, 0x72, 0x79, 0x12, 0x27, 0x0a, 0x07, 0x41, 0x64, 0x64, 0x49,
 	0x74, 0x65, 0x6d, 0x12, 0x0b, 0x2e, 0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x2e, 0x49, 0x74, 0x65, 0x6d,
 	0x1a, 0x0d, 0x2e, 0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x2e, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x22,
@@ -58,42 +58,64 @@ var file_app_model_service_proto_rawDesc = []byte{
 	0x72, 0x1a, 0x0d, 0x2e, 0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x2e, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73,
 	0x22, 0x00, 0x12, 0x25, 0x0a, 0x07, 0x47, 0x65, 0x74, 0x55, 0x73, 0x65, 0x72, 0x12, 0x0b, 0x2e,
 	0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x2e, 0x55, 0x73, 0x65, 0x72, 0x1a, 0x0b, 0x2e, 0x6d, 0x6f, 0x64,
-	0x65, 0x6c, 0x2e, 0x55, 0x73, 0x65, 0x72, 0x22, 0x00, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f,
-	0x33,
+	0x65, 0x6c, 0x2e, 0x55, 0x73, 0x65, 0x72, 0x22, 0x00, 0x12, 0x2f, 0x0a, 0x0b, 0x41, 0x64, 0x64,
+	0x4b, 0x61, 0x74, 0x65, 0x67, 0x6f, 0x72, 0x69, 0x12, 0x0f, 0x2e, 0x6d, 0x6f, 0x64, 0x65, 0x6c,
+	0x2e, 0x4b, 0x61, 0x74, 0x65, 0x67, 0x6f, 0x72, 0x69, 0x1a, 0x0d, 0x2e, 0x6d, 0x6f, 0x64, 0x65,
+	0x6c, 0x2e, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x22, 0x00, 0x12, 0x30, 0x0a, 0x0c, 0x45, 0x64,
+	0x69, 0x74, 0x4b, 0x61, 0x74, 0x65, 0x67, 0x6f, 0x72, 0x69, 0x12, 0x0f, 0x2e, 0x6d, 0x6f, 0x64,
+	0x65, 0x6c, 0x2e, 0x4b, 0x61, 0x74, 0x65, 0x67, 0x6f, 0x72, 0x69, 0x1a, 0x0d, 0x2e, 0x6d, 0x6f,
+	0x64, 0x65, 0x6c, 0x2e, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x22, 0x00, 0x12, 0x32, 0x0a, 0x0e,
+	0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x4b, 0x61, 0x74, 0x65, 0x67, 0x6f, 0x72, 0x69, 0x12, 0x0f,
+	0x2e, 0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x2e, 0x4b, 0x61, 0x74, 0x65, 0x67, 0x6f, 0x72, 0x69, 0x1a,
+	0x0d, 0x2e, 0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x2e, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x22, 0x00,
+	0x12, 0x33, 0x0a, 0x0c, 0x53, 0x68, 0x6f, 0x77, 0x4b, 0x61, 0x74, 0x65, 0x67, 0x6f, 0x72, 0x69,
+	0x12, 0x0c, 0x2e, 0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x2e, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x1a, 0x13,
+	0x2e, 0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x2e, 0x4b, 0x61, 0x74, 0x65, 0x67, 0x6f, 0x72, 0x69, 0x4c,
+	0x69, 0x73, 0x74, 0x22, 0x00, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var file_app_model_service_proto_goTypes = []interface{}{
-	(*Item)(nil),     // 0: model.Item
-	(*Empty)(nil),    // 1: model.Empty
-	(*User)(nil),     // 2: model.User
-	(*Status)(nil),   // 3: model.Status
-	(*ItemList)(nil), // 4: model.ItemList
-	(*UserList)(nil), // 5: model.UserList
+	(*Item)(nil),         // 0: model.Item
+	(*Empty)(nil),        // 1: model.Empty
+	(*User)(nil),         // 2: model.User
+	(*Kategori)(nil),     // 3: model.Kategori
+	(*Status)(nil),       // 4: model.Status
+	(*ItemList)(nil),     // 5: model.ItemList
+	(*UserList)(nil),     // 6: model.UserList
+	(*KategoriList)(nil), // 7: model.KategoriList
 }
 var file_app_model_service_proto_depIdxs = []int32{
-	0, // 0: model.Inventory.AddItem:input_type -> model.Item
-	0, // 1: model.Inventory.GetItem:input_type -> model.Item
-	0, // 2: model.Inventory.Show:input_type -> model.Item
-	0, // 3: model.Inventory.ShowAll:input_type -> model.Item
-	1, // 4: model.Inventory.ShowItem:input_type -> model.Empty
-	2, // 5: model.Inventory.Register:input_type -> model.User
-	1, // 6: model.Inventory.ShowUser:input_type -> model.Empty
-	2, // 7: model.Inventory.Login:input_type -> model.User
-	2, // 8: model.Inventory.GetUser:input_type -> model.User
-	3, // 9: model.Inventory.AddItem:output_type -> model.Status
-	0, // 10: model.Inventory.GetItem:output_type -> model.Item
-	0, // 11: model.Inventory.Show:output_type -> model.Item
-	4, // 12: model.Inventory.ShowAll:output_type -> model.ItemList
-	4, // 13: model.Inventory.ShowItem:output_type -> model.ItemList
-	3, // 14: model.Inventory.Register:output_type -> model.Status
-	5, // 15: model.Inventory.ShowUser:output_type -> model.UserList
-	3, // 16: model.Inventory.Login:output_type -> model.Status
-	2, // 17: model.Inventory.GetUser:output_type -> model.User
-	9, // [9:18] is the sub-list for method output_type
-	0, // [0:9] is the sub-list for method input_type
-	0, // [0:0] is the sub-list for extension type_name
-	0, // [0:0] is the sub-list for extension extendee
-	0, // [0:0] is the sub-list for field type_name
+	0,  // 0: model.Inventory.AddItem:input_type -> model.Item
+	0,  // 1: model.Inventory.GetItem:input_type -> model.Item
+	0,  // 2: model.Inventory.Show:input_type -> model.Item
+	0,  // 3: model.Inventory.ShowAll:input_type -> model.Item
+	1,  // 4: model.Inventory.ShowItem:input_type -> model.Empty
+	2,  // 5: model.Inventory.Register:input_type -> model.User
+	1,  // 6: model.Inventory.ShowUser:input_type -> model.Empty
+	2,  // 7: model.Inventory.Login:input_type -> model.User
+	2,  // 8: model.Inventory.GetUser:input_type -> model.User
+	3,  // 9: model.Inventory.AddKategori:input_type -> model.Kategori
+	3,  // 10: model.Inventory.EditKategori:input_type -> model.Kategori
+	3,  // 11: model.Inventory.DeleteKategori:input_type -> model.Kategori
+	1,  // 12: model.Inventory.ShowKategori:input_type -> model.Empty
+	4,  // 13: model.Inventory.AddItem:output_type -> model.Status
+	0,  // 14: model.Inventory.GetItem:output_type -> model.Item
+	0,  // 15: model.Inventory.Show:output_type -> model.Item
+	5,  // 16: model.Inventory.ShowAll:output_type -> model.ItemList
+	5,  // 17: model.Inventory.ShowItem:output_type -> model.ItemList
+	4,  // 18: model.Inventory.Register:output_type -> model.Status
+	6,  // 19: model.Inventory.ShowUser:output_type -> model.UserList
+	4,  // 20: model.Inventory.Login:output_type -> model.Status
+	2,  // 21: model.Inventory.GetUser:output_type -> model.User
+	4,  // 22: model.Inventory.AddKategori:output_type -> model.Status
+	4,  // 23: model.Inventory.EditKategori:output_type -> model.Status
+	4,  // 24: model.Inventory.DeleteKategori:output_type -> model.Status
+	7,  // 25: model.Inventory.ShowKategori:output_type -> model.KategoriList
+	13, // [13:26] is the sub-list for method output_type
+	0,  // [0:13] is the sub-list for method input_type
+	0,  // [0:0] is the sub-list for extension type_name
+	0,  // [0:0] is the sub-list for extension extendee
+	0,  // [0:0] is the sub-list for field type_name
 }
 
 func init() { file_app_model_service_proto_init() }
@@ -142,6 +164,10 @@ type InventoryClient interface {
 	ShowUser(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*UserList, error)
 	Login(ctx context.Context, in *User, opts ...grpc.CallOption) (*Status, error)
 	GetUser(ctx context.Context, in *User, opts ...grpc.CallOption) (*User, error)
+	AddKategori(ctx context.Context, in *Kategori, opts ...grpc.CallOption) (*Status, error)
+	EditKategori(ctx context.Context, in *Kategori, opts ...grpc.CallOption) (*Status, error)
+	DeleteKategori(ctx context.Context, in *Kategori, opts ...grpc.CallOption) (*Status, error)
+	ShowKategori(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*KategoriList, error)
 }
 
 type inventoryClient struct {
@@ -233,6 +259,42 @@ func (c *inventoryClient) GetUser(ctx context.Context, in *User, opts ...grpc.Ca
 	return out, nil
 }
 
+func (c *inventoryClient) AddKategori(ctx context.Context, in *Kategori, opts ...grpc.CallOption) (*Status, error) {
+	out := new(Status)
+	err := c.cc.Invoke(ctx, "/model.Inventory/AddKategori", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *inventoryClient) EditKategori(ctx context.Context, in *Kategori, opts ...grpc.CallOption) (*Status, error) {
+	out := new(Status)
+	err := c.cc.Invoke(ctx, "/model.Inventory/EditKategori", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *inventoryClient) DeleteKategori(ctx context.Context, in *Kategori, opts ...grpc.CallOption) (*Status, error) {
+	out := new(Status)
+	err := c.cc.Invoke(ctx, "/model.Inventory/DeleteKategori", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *inventoryClient) ShowKategori(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*KategoriList, error) {
+	out := new(KategoriList)
+	err := c.cc.Invoke(ctx, "/model.Inventory/ShowKategori", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // InventoryServer is the server API for Inventory service.
 type InventoryServer interface {
 	AddItem(context.Context, *Item) (*Status, error)
@@ -244,6 +306,10 @@ type InventoryServer interface {
 	ShowUser(context.Context, *Empty) (*UserList, error)
 	Login(context.Context, *User) (*Status, error)
 	GetUser(context.Context, *User) (*User, error)
+	AddKategori(context.Context, *Kategori) (*Status, error)
+	EditKategori(context.Context, *Kategori) (*Status, error)
+	DeleteKategori(context.Context, *Kategori) (*Status, error)
+	ShowKategori(context.Context, *Empty) (*KategoriList, error)
 }
 
 // UnimplementedInventoryServer can be embedded to have forward compatible implementations.
@@ -276,6 +342,18 @@ func (*UnimplementedInventoryServer) Login(context.Context, *User) (*Status, err
 }
 func (*UnimplementedInventoryServer) GetUser(context.Context, *User) (*User, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetUser not implemented")
+}
+func (*UnimplementedInventoryServer) AddKategori(context.Context, *Kategori) (*Status, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AddKategori not implemented")
+}
+func (*UnimplementedInventoryServer) EditKategori(context.Context, *Kategori) (*Status, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method EditKategori not implemented")
+}
+func (*UnimplementedInventoryServer) DeleteKategori(context.Context, *Kategori) (*Status, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteKategori not implemented")
+}
+func (*UnimplementedInventoryServer) ShowKategori(context.Context, *Empty) (*KategoriList, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ShowKategori not implemented")
 }
 
 func RegisterInventoryServer(s *grpc.Server, srv InventoryServer) {
@@ -444,6 +522,78 @@ func _Inventory_GetUser_Handler(srv interface{}, ctx context.Context, dec func(i
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Inventory_AddKategori_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(Kategori)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(InventoryServer).AddKategori(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/model.Inventory/AddKategori",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(InventoryServer).AddKategori(ctx, req.(*Kategori))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Inventory_EditKategori_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(Kategori)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(InventoryServer).EditKategori(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/model.Inventory/EditKategori",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(InventoryServer).EditKategori(ctx, req.(*Kategori))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Inventory_DeleteKategori_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(Kategori)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(InventoryServer).DeleteKategori(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/model.Inventory/DeleteKategori",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(InventoryServer).DeleteKategori(ctx, req.(*Kategori))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Inventory_ShowKategori_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(Empty)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(InventoryServer).ShowKategori(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/model.Inventory/ShowKategori",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(InventoryServer).ShowKategori(ctx, req.(*Empty))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 var _Inventory_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "model.Inventory",
 	HandlerType: (*InventoryServer)(nil),
@@ -483,6 +633,22 @@ var _Inventory_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetUser",
 			Handler:    _Inventory_GetUser_Handler,
+		},
+		{
+			MethodName: "AddKategori",
+			Handler:    _Inventory_AddKategori_Handler,
+		},
+		{
+			MethodName: "EditKategori",
+			Handler:    _Inventory_EditKategori_Handler,
+		},
+		{
+			MethodName: "DeleteKategori",
+			Handler:    _Inventory_DeleteKategori_Handler,
+		},
+		{
+			MethodName: "ShowKategori",
+			Handler:    _Inventory_ShowKategori_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

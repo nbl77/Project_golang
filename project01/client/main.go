@@ -100,7 +100,11 @@ func main()  {
       }
     case "4":
       if config.Status {
-        service.ShowAll(conn)
+        if config.Tipe == "user" {
+          service.ShowAll(conn)
+        }else {
+          service.MenuKategori(conn)
+        }
       }
       break
     case "5":

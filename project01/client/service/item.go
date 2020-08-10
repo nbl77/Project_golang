@@ -8,8 +8,9 @@ import (
   "project01/app/config"
   // "encoding/json"
 )
-var ArrKategori = map[int32]string{1:"elektronik",2:"non elektronik"}
+
 func AmbilItem(conn model.InventoryClient){
+  var ArrKategori = GetKategori().KategoriList
   var (
     idItem int32
   )
@@ -19,21 +20,29 @@ func AmbilItem(conn model.InventoryClient){
   req:= &model.Item{
     IdItem: idItem,
   }
-
-  res,err:= conn.GetItem(context.Background(),req)
-
-  if err != nil {
-    log.Fatalf("Tidak bisa menerima response terkait Get Item", err)
-  }
-  if res.IdItem == 0 {
+  itemReq,_ := conn.Show(context.Background(),req)
+  if itemReq.IdUser != config.IdUser {
     fmt.Println("ID Item Yang anda masukan tidak tersedia")
   }else {
-    fmt.Println("Item Anda adalah ", res)
+    res,err:= conn.GetItem(context.Background(),req)
+
+    if err != nil {
+      log.Fatalf("Tidak bisa menerima response terkait Get Item", err)
+    }
+    if res.IdItem == 0 {
+      fmt.Println("ID Item Yang anda masukan tidak tersedia")
+      }else {
+        fmt.Println("Item yang Anda Ambil Adalah ")
+        fmt.Println("ID Barang :",res.IdItem)
+        fmt.Println("Nama Barang :",res.NamaItem)
+        fmt.Println("Jumlah Barang :",res.Jumlah)
+        fmt.Println("Kategori Barang :",ArrKategori[res.Kategori].NamaKategori)
+      }
   }
 
 }
 func AddItem (conn model.InventoryClient) {
-
+  var ArrKategori = GetKategori().KategoriList
   var (
     idItem int32 = 0
     namaItem string
@@ -70,11 +79,11 @@ func AddItem (conn model.InventoryClient) {
   }
 
   // fmt.Println("Status Anda adalah ", res.GetStatus())
-  fmt.Println(res.GetMessage() + "\nNama Barang :",req.NamaItem,"\nJumlah :",req.Jumlah,"\nKategori :",ArrKategori[req.Kategori] )
+  fmt.Println(res.GetMessage() + "\nNama Barang :",req.NamaItem,"\nJumlah :",req.Jumlah,"\nKategori :",ArrKategori[req.Kategori].NamaKategori )
 }
 func ShowPerItem(conn model.InventoryClient){
+  var ArrKategori = GetKategori().KategoriList
   var idItem int32
-
   fmt.Println("Masukkan id item")
   fmt.Scan(&idItem)
 
@@ -87,14 +96,18 @@ func ShowPerItem(conn model.InventoryClient){
   if err != nil {
     log.Fatalf("Tidak bisa menerima response terkait Show", err)
   }
-  fmt.Println("Item yang Anda cari Adalah ")
-  fmt.Println("ID Barang :",res.IdItem)
-  fmt.Println("Nama Barang :",res.NamaItem)
-  fmt.Println("Jumlah Barang :",res.Jumlah)
-  fmt.Println("Kategori Barang :",ArrKategori[res.Kategori])
+  if res.IdItem == 0 {
+    fmt.Println("ID Item Yang anda masukan tidak tersedia")
+    }else {
+      fmt.Println("Item yang Anda cari Adalah ")
+      fmt.Println("ID Barang :",res.IdItem)
+      fmt.Println("Nama Barang :",res.NamaItem)
+      fmt.Println("Jumlah Barang :",res.Jumlah)
+      fmt.Println("Kategori Barang :",ArrKategori[res.Kategori].NamaKategori)
+    }
 }
 func ShowAll(conn model.InventoryClient) {
-  fmt.Println(config.IdUser)
+  var ArrKategori = GetKategori().KategoriList
   req:= &model.Item{
     IdUser : config.IdUser,
   }
@@ -117,13 +130,14 @@ func ShowAll(conn model.InventoryClient) {
       fmt.Println("ID Barang :",val.IdItem)
       fmt.Println("Nama Barang :",val.NamaItem)
       fmt.Println("Jumlah Barang :",val.Jumlah)
-      fmt.Println("Kategori Barang :",ArrKategori[val.Kategori])
+      fmt.Println("Kategori Barang :",ArrKategori[val.Kategori].NamaKategori)
     }
   }
   // rsp,_ := json.Marshal(result)
   // fmt.Println(string(rsp))
 }
 func GetAllItem(conn model.InventoryClient)  {
+  var ArrKategori = GetKategori().KategoriList
   resp, err:= conn.ShowItem(context.Background(), new(model.Empty))
   if err != nil {
     log.Fatalf("Tidak bisa menerima response terkait Show All", err)
@@ -137,24 +151,26 @@ func GetAllItem(conn model.InventoryClient)  {
       fmt.Println("ID Item :",val.IdItem)
       fmt.Println("Nama Item :",val.NamaItem)
       fmt.Println("Jumlah :",val.Jumlah)
-      fmt.Println("Kategori :",ArrKategori[val.Kategori])
+      fmt.Println("Kategori :",ArrKategori[val.Kategori].NamaKategori)
       fmt.Println("Pemilik :",GetSingle(conn, val.IdUser).NamaLengkap)
     }
   }
 }
 func SelectKategori() int32 {
+  var ArrKategori = GetKategori().KategoriList
   var res string
   fmt.Println("Pilih Kategori :")
   for key,val :=range ArrKategori{
-    fmt.Println(key,val)
+    fmt.Println(strconv.Itoa(key + 1)+".",val.NamaKategori)
   }
   fmt.Println("===============")
   fmt.Scan(&res)
   res2,_ := strconv.Atoi(res)
-  return int32(res2)
+  return int32(res2 - 1)
 }
 
 func FilterItemByKat(conn model.InventoryClient)  {
+  var ArrKategori = GetKategori().KategoriList
   kategori := SelectKategori()
   resp, err:= conn.ShowItem(context.Background(), new(model.Empty))
   if err != nil {
@@ -170,7 +186,7 @@ func FilterItemByKat(conn model.InventoryClient)  {
         fmt.Println("ID Item :",val.IdItem)
         fmt.Println("Nama Item :",val.NamaItem)
         fmt.Println("Jumlah :",val.Jumlah)
-        fmt.Println("Kategori :",ArrKategori[val.Kategori])
+        fmt.Println("Kategori :",ArrKategori[val.Kategori].NamaKategori)
         fmt.Println("Pemilik :",GetSingle(conn, val.IdUser).NamaLengkap)
       }
     }

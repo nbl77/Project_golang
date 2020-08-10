@@ -14,9 +14,9 @@ service Inventory {
   rpc ShowUser(Empty) returns (UserList) {}
   rpc Login(User) returns (Status) {}
   rpc GetUser(User) returns (User) {}
-  //
-  // rpc AddKategori(Kategori) returns (Status) {}
-  // rpc EditKategori(Kategori) returns (Status) {}
-  // rpc DeleteKategori(Kategori) returns (Status) {}
-  // rpc ShowKategori(Empty) returns (KategoriList) {}
+  
+  rpc AddKategori(Kategori) returns (Status) {}
+  rpc EditKategori(Kategori) returns (Status) {}
+  rpc DeleteKategori(Kategori) returns (Status) {}
+  rpc ShowKategori(Empty) returns (KategoriList) {}
 }

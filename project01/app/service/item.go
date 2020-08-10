@@ -24,12 +24,9 @@ func init()  {
 // }
 
 func idFilterInventory (idItem int32) *model.Item {
-  for i := 0; i < len(InventoryList.ItemList); i++ {
-    InventoryDariList := InventoryList.ItemList[i]
-    if idItem == InventoryDariList.IdItem {
-      return InventoryDariList
-    } else {
-      return nil
+  for _,val :=range InventoryList.ItemList{
+    if idItem == val.IdItem {
+      return val
     }
   }
   return nil
@@ -109,12 +106,7 @@ func (*Service) GetItem(ctx context.Context, item *model.Item) (*model.Item, err
     IdItem: 0,
   }
     if InventoryDariClient != nil {
-      res= &model.Item {
-        IdItem: InventoryDariClient.IdItem,
-        NamaItem: InventoryDariClient.NamaItem,
-        Jumlah: InventoryDariClient.Jumlah,
-        Kategori: InventoryDariClient.Kategori,
-      }
+      res = InventoryDariClient
       if len(InventoryList.ItemList) == 1 {
         InventoryList.ItemList = make([]*model.Item, 0)
         }else {
@@ -136,16 +128,7 @@ func(*Service) Show(ctx context.Context, item *model.Item) (*model.Item, error) 
   InventoryDariClient := idFilterInventory(item.GetIdItem())
   var err error
   if InventoryDariClient != nil {
-    res:= &model.Item {
-      IdItem: InventoryDariClient.IdItem,
-      NamaItem: InventoryDariClient.NamaItem,
-      Jumlah: InventoryDariClient.Jumlah,
-      Kategori: InventoryDariClient.Kategori,
-    }
-
-    removeInventory(InventoryList.ItemList, item.GetIdItem())
-
-    return res, nil
+    return InventoryDariClient, nil
   } else {
     res :=&model.Item {
       IdItem: 0,
