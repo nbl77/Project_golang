@@ -1,13 +1,14 @@
 package main
 
 import (
-  "context"
+  // "context"
   "log"
   "fmt"
   "project01/app/model"
+  "project01/client/service"
   "google.golang.org/grpc"
   "project01/app/config"
-  "encoding/json"
+  // "encoding/json"
 )
 
 func ConnectInven() model.InventoryClient {
@@ -38,7 +39,7 @@ func main()  {
     }
     fmt.Println("99.Exit")
     key = ""
-    fmt.Scanln(&key)
+    fmt.Scan(&key)
     fmt.Println(key)
     switch key {
     case "1":
@@ -49,14 +50,14 @@ func main()  {
           password string
         )
         fmt.Print("Masukan Nama Lengkap Anda :")
-        fmt.Scanln(&namaLengkap)
+        fmt.Scan(&namaLengkap)
         fmt.Print("Masukan Username :")
-        fmt.Scanln(&username)
+        fmt.Scan(&username)
         fmt.Print("Masukan Password :")
-        fmt.Scanln(&password)
-        fmt.Println(Register(conn, namaLengkap, username, password))
+        fmt.Scan(&password)
+        fmt.Println(service.Register(conn, namaLengkap, username, password))
       }else {
-        addItem(conn)
+        service.AddItem(conn)
       }
       break
     case "2":
@@ -66,26 +67,26 @@ func main()  {
           password string
         )
         fmt.Print("Masukan Username :")
-        fmt.Scanln(&username)
+        fmt.Scan(&username)
         fmt.Print("Masukan Password :")
-        fmt.Scanln(&password)
-        fmt.Println(Login(conn, username, password))
+        fmt.Scan(&password)
+        fmt.Println(service.Login(conn, username, password))
       }else {
-        ambilItem(conn)
+        service.AmbilItem(conn)
       }
       break
     case "3":
       if config.Status {
-        showPerItem(conn)
+        service.ShowPerItem(conn)
       }
     case "4":
       if config.Status {
-        ShowAll(conn)
+        service.ShowAll(conn)
       }
       break
     case "5":
       if config.Status {
-        fmt.Println(Logout(conn))
+        fmt.Println(service.Logout(conn))
       }
       break
     default:
@@ -94,151 +95,4 @@ func main()  {
     }
   }
 
-}
-
-func ambilItem(conn model.InventoryClient){
-  var (
-    idItem int32
-  )
-
-  fmt.Println("Masukkan id item")
-  fmt.Scan(&idItem)
-
-  req:= &model.Item{
-    IdItem: idItem,
-  }
-
-  res,err:= conn.GetItem(context.Background(),req)
-
-  if err != nil {
-    log.Fatalf("Tidak bisa menerima response terkait Get Item", err)
-  }
-
-  fmt.Println("Item Anda adalah ", res)
-}
-
-var ID int32 = 1
-
-func addItem (conn model.InventoryClient) {
-
-  var (
-    idItem int32 = ID
-    namaItem string
-    jumlah int32
-    kategori int32
-    idUser int32 = config.IdUser
-  )
-  ID++
-  // fmt.Println("Masukkan idItem")
-  // fmt.Scan(&idItem)
-
-  fmt.Println("Masukkan nama item")
-  fmt.Scan(&namaItem)
-
-  fmt.Println("Masukkan jumlah")
-  fmt.Scan(&jumlah)
-
-  fmt.Println("Masukkan kategori")
-  fmt.Scan(&kategori)
-
-  req:= &model.Item{
-    IdItem : idItem,
-    NamaItem: namaItem,
-    Jumlah: jumlah,
-    Kategori: kategori,
-    IdUser: idUser,
-  }
-
-  res,err:= conn.AddItem(context.Background(), req)
-
-  if err != nil {
-    log.Fatalf("Tidak bisa menerima response terkait Add item", err)
-  }
-
-  fmt.Println("Status Anda adalah ", res.GetStatus())
-  fmt.Println("Message Anda adalah ", res.GetMessage())
-}
-
-func showPerItem(conn model.InventoryClient){
-  var idItem int32
-
-  fmt.Println("Masukkan id item")
-  fmt.Scan(&idItem)
-
-  req:= &model.Item{
-    IdItem:idItem,
-  }
-
-  res,err := conn.Show(context.Background(),req)
-
-  if err != nil {
-    log.Fatalf("Tidak bisa menerima response terkait Show", err)
-  }
-  fmt.Println("Item yang Anda cari Adalah ", res)
-}
-
-func ShowAll(conn model.InventoryClient) {
-  req:= &model.Item{
-    IdUser : config.IdUser,
-  }
-
-  res, err:= conn.ShowAll(context.Background(), req)
-
-  if err != nil {
-    log.Fatalf("Tidak bisa menerima response terkait Show All", err)
-  }
-
-  fmt.Println("List item Anda adalah ", res)
-}
-
-func Register(conn model.InventoryClient, namaLengkap,username, password string) string {
-  user := &model.User{
-    IdUser : 0,
-    NamaLengkap : namaLengkap,
-    Username: username,
-    Password: password,
-  }
-  resp,err := conn.Register(context.Background(), user)
-  if err != nil {
-    log.Fatalf(err.Error())
-  }
-  // res,_ := json.Marshal(resp)
- return resp.Message
-}
-
-func ShowUser(conn model.InventoryClient) string {
-  resp,err := conn.ShowUser(context.Background(), new(model.Empty))
-  if err != nil {
-    log.Fatalf(err.Error())
-  }
-  res,_ := json.Marshal(resp)
-  return string(res)
-}
-
-func Login(conn model.InventoryClient, username, password string) string {
-  user := &model.User{
-    IdUser : 0,
-    NamaLengkap : "",
-    Username: username,
-    Password: password,
-  }
-  resp,err := conn.Login(context.Background(), user)
-  if err != nil {
-    log.Fatalf(err.Error())
-  }
-  if resp.Status == 200 {
-    config.Status = true
-    config.IdUser = user.IdUser
-  }
-  return resp.Message
-}
-
-func Logout(conn model.InventoryClient) string {
-  config.Status = false
-  config.IdUser = 0
-  if !config.Status {
-    return "Berhasil Logout"
-  }else {
-    return "Kesalahan Pada sistem"
-  }
 }
