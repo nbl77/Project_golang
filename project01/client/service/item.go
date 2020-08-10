@@ -87,7 +87,11 @@ func ShowPerItem(conn model.InventoryClient){
   if err != nil {
     log.Fatalf("Tidak bisa menerima response terkait Show", err)
   }
-  fmt.Println("Item yang Anda cari Adalah ", res)
+  fmt.Println("Item yang Anda cari Adalah ")
+  fmt.Println("ID Barang :",res.IdItem)
+  fmt.Println("Nama Barang :",res.NamaItem)
+  fmt.Println("Jumlah Barang :",res.Jumlah)
+  fmt.Println("Kategori Barang :",ArrKategori[res.Kategori])
 }
 func ShowAll(conn model.InventoryClient) {
   fmt.Println(config.IdUser)
@@ -107,15 +111,38 @@ func ShowAll(conn model.InventoryClient) {
   if result == nil {
     fmt.Println("Anda belum menyimpan barangg")
   }else {
+    fmt.Println("Barang Anda : ")
     for _,val :=range result{
-      fmt.Println(val)
+      fmt.Println("------------------------------")
+      fmt.Println("ID Barang :",val.IdItem)
+      fmt.Println("Nama Barang :",val.NamaItem)
+      fmt.Println("Jumlah Barang :",val.Jumlah)
+      fmt.Println("Kategori Barang :",ArrKategori[val.Kategori])
     }
   }
   // rsp,_ := json.Marshal(result)
   // fmt.Println(string(rsp))
 }
+func GetAllItem(conn model.InventoryClient)  {
+  resp, err:= conn.ShowItem(context.Background(), new(model.Empty))
+  if err != nil {
+    log.Fatalf("Tidak bisa menerima response terkait Show All", err)
+  }
+  if len(resp.ItemList) < 1 {
+    fmt.Println("Belum ada Item Yang Di Simpan")
+  }else {
+    fmt.Println("Barang yang telah Di Simpan :")
+    for _,val :=range resp.ItemList{
+      fmt.Println("========================")
+      fmt.Println("ID Item :",val.IdItem)
+      fmt.Println("Nama Item :",val.NamaItem)
+      fmt.Println("Jumlah :",val.Jumlah)
+      fmt.Println("Kategori :",ArrKategori[val.Kategori])
+      fmt.Println("Pemilik :",GetSingle(conn, val.IdUser).NamaLengkap)
+    }
+  }
+}
 func SelectKategori() int32 {
-
   var res string
   fmt.Println("Pilih Kategori :")
   for key,val :=range ArrKategori{
@@ -125,4 +152,27 @@ func SelectKategori() int32 {
   fmt.Scan(&res)
   res2,_ := strconv.Atoi(res)
   return int32(res2)
+}
+
+func FilterItemByKat(conn model.InventoryClient)  {
+  kategori := SelectKategori()
+  resp, err:= conn.ShowItem(context.Background(), new(model.Empty))
+  if err != nil {
+    log.Fatalf("Tidak bisa menerima response terkait Show All", err)
+  }
+  if len(resp.ItemList) < 1 {
+    fmt.Println("Belum ada Item Yang Di Simpan")
+  }else {
+    fmt.Println("Barang yang telah Di Simpan :")
+    for _,val :=range resp.ItemList{
+      if val.Kategori == kategori {
+        fmt.Println("========================")
+        fmt.Println("ID Item :",val.IdItem)
+        fmt.Println("Nama Item :",val.NamaItem)
+        fmt.Println("Jumlah :",val.Jumlah)
+        fmt.Println("Kategori :",ArrKategori[val.Kategori])
+        fmt.Println("Pemilik :",GetSingle(conn, val.IdUser).NamaLengkap)
+      }
+    }
+  }
 }

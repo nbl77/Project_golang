@@ -118,7 +118,14 @@ func (*Service) GetItem(ctx context.Context, item *model.Item) (*model.Item, err
       if len(InventoryList.ItemList) == 1 {
         InventoryList.ItemList = make([]*model.Item, 0)
         }else {
-          InventoryList.ItemList = removeInventory(InventoryList.ItemList, item.IdItem - 1)
+          var flag int32
+          for key,val:=range InventoryList.ItemList{
+            if val.IdItem == item.IdItem {
+                flag = int32(key)
+                break
+            }
+          }
+          InventoryList.ItemList = removeInventory(InventoryList.ItemList, flag)
         }
     }
   return res,nil
@@ -169,5 +176,8 @@ func(*Service) ShowAll(ctx context.Context, item *model.Item) (*model.ItemList, 
   }
   log.Println("Menampilkan Barang User...")
   return InventoryListShowAll,nil
+}
 
+func (*Service) ShowItem(ctx context.Context, empty *model.Empty) (*model.ItemList, error) {
+  return InventoryList,nil
 }

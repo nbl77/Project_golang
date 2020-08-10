@@ -2,11 +2,22 @@ package service
 import (
   "context"
   "log"
+  "fmt"
   "project01/app/model"
   "project01/app/config"
-  "encoding/json"
   "strconv"
 )
+
+func GetSingle(conn model.InventoryClient, id_user int32) *model.User {
+  user := &model.User{
+    IdUser: id_user,
+  }
+  resp,err := conn.GetUser(context.Background(),user)
+  if err != nil {
+    log.Fatalf(err.Error())
+  }
+  return resp
+}
 func Register(conn model.InventoryClient, namaLengkap,username, password string) string {
   user := &model.User{
     IdUser : 0,
@@ -22,13 +33,22 @@ func Register(conn model.InventoryClient, namaLengkap,username, password string)
  return resp.Message
 }
 
-func ShowUser(conn model.InventoryClient) string {
+func ShowUser(conn model.InventoryClient) {
   resp,err := conn.ShowUser(context.Background(), new(model.Empty))
   if err != nil {
     log.Fatalf(err.Error())
   }
-  res,_ := json.Marshal(resp)
-  return string(res)
+  if len(resp.UserList) < 1 {
+    fmt.Println("Belum ada user yang mendaftar")
+  }else {
+    fmt.Println("User yang telah mendaftar :")
+    for _,val :=range resp.UserList{
+      fmt.Println("========================")
+      fmt.Println("ID User :",val.IdUser)
+      fmt.Println("Nama User :",val.NamaLengkap)
+      fmt.Println("Username :",val.Username)
+    }
+  }
 }
 
 func Login(conn model.InventoryClient, username, password string) string {
@@ -46,6 +66,10 @@ func Login(conn model.InventoryClient, username, password string) string {
     id,_ := strconv.Atoi(resp.Message)
     config.Status = true
     config.IdUser = int32(id)
+    config.Tipe = "user"
+    if (user.Username == "admin") && (user.Password == "admin") {
+      config.Tipe = "admin"
+    }
     resp.Message = "Berhasil Login"
   }
   return resp.Message

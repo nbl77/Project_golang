@@ -31,16 +31,23 @@ func main()  {
       fmt.Println("1.Register")
       fmt.Println("2.Login")
     }else {
-      fmt.Println("1.Tambah Barang")
-      fmt.Println("2.Ambil Barang")
-      fmt.Println("3.Lihat Barang")
-      fmt.Println("4.Lihat Semua Barang")
-      fmt.Println("5.Logout")
+      if config.Tipe == "user" {
+        fmt.Println("1.Tambah Barang")
+        fmt.Println("2.Ambil Barang")
+        fmt.Println("3.Lihat Barang")
+        fmt.Println("4.Lihat Semua Barang")
+        fmt.Println("5.Logout")
+      }else {
+        fmt.Println("1. Lihat Semua User")
+        fmt.Println("2. Lihat Semua Barang")
+        fmt.Println("3. Lihat Semua Berdasarkan Kategori")
+        fmt.Println("4. Konfigurasi Kategori")
+        fmt.Println("5.Logout")
+      }
     }
     fmt.Println("99.Exit")
     key = ""
     fmt.Scan(&key)
-    fmt.Println(key)
     switch key {
     case "1":
       if !config.Status {
@@ -57,7 +64,11 @@ func main()  {
         fmt.Scan(&password)
         fmt.Println(service.Register(conn, namaLengkap, username, password))
       }else {
-        service.AddItem(conn)
+        if config.Tipe == "user" {
+          service.AddItem(conn)
+        }else {
+          service.ShowUser(conn)
+        }
       }
       break
     case "2":
@@ -72,12 +83,20 @@ func main()  {
         fmt.Scan(&password)
         fmt.Println(service.Login(conn, username, password))
       }else {
-        service.AmbilItem(conn)
+        if config.Tipe == "user" {
+          service.AmbilItem(conn)
+        }else {
+          service.GetAllItem(conn)
+        }
       }
       break
     case "3":
       if config.Status {
-        service.ShowPerItem(conn)
+        if config.Tipe == "user" {
+          service.ShowPerItem(conn)
+        }else {
+          service.FilterItemByKat(conn)
+        }
       }
     case "4":
       if config.Status {

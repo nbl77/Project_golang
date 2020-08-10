@@ -8,10 +8,12 @@ service Inventory {
   rpc GetItem(Item) returns (Item) {}
   rpc Show(Item) returns (Item) {}
   rpc ShowAll(Item) returns (ItemList) {}
+  rpc ShowItem(Empty) returns (ItemList) {}
 
   rpc Register(User) returns (Status) {}
   rpc ShowUser(Empty) returns (UserList) {}
   rpc Login(User) returns (Status) {}
+  rpc GetUser(User) returns (User) {}
   //
   // rpc AddKategori(Kategori) returns (Status) {}
   // rpc EditKategori(Kategori) returns (Status) {}
