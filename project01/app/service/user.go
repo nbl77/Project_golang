@@ -5,6 +5,7 @@ import (
   "log"
   "project01/app/model"
   "regexp"
+  "strconv"
 )
 var storageUserList *model.UserList
 var session *model.Session
@@ -94,9 +95,11 @@ func (*Service) ShowUser(ctx context.Context, empty *model.Empty) (*model.UserLi
 func (*Service) Login(ctx context.Context, user *model.User) (*model.Status, error){
   status := new(model.Status)
   login := false
-  for _, val:=range storageUserList.UserList{
+  kun := 0
+  for key, val:=range storageUserList.UserList{
       if (val.Username == user.Username) && (val.Password == user.Password) {
         login = true
+        kun = key
         break
       }
     }
@@ -108,7 +111,7 @@ func (*Service) Login(ctx context.Context, user *model.User) (*model.Status, err
     }else {
       status = &model.Status{
         Status : 200,
-        Message : "Berhasil Login",
+        Message : strconv.Itoa(kun),
       }
       log.Println("Success Login!")
     }

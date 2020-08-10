@@ -5,6 +5,7 @@ import (
   "project01/app/model"
   "project01/app/config"
   "encoding/json"
+  "strconv"
 )
 func Register(conn model.InventoryClient, namaLengkap,username, password string) string {
   user := &model.User{
@@ -42,8 +43,10 @@ func Login(conn model.InventoryClient, username, password string) string {
     log.Fatalf(err.Error())
   }
   if resp.Status == 200 {
+    id,_ := strconv.Atoi(resp.Message)
     config.Status = true
-    config.IdUser = user.IdUser
+    config.IdUser = int32(id)
+    resp.Message = "Berhasil Login"
   }
   return resp.Message
 }
