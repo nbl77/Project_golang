@@ -36,10 +36,6 @@ func AddItem (conn model.InventoryClient) {
     kategori int32
     idUser int32 = config.IdUser
   )
-  ID++
-  // fmt.Println("Masukkan idItem")
-  // fmt.Scan(&idItem)
-
   fmt.Println("Masukkan nama item")
   fmt.Scan(&namaItem)
 
