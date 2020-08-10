@@ -6,7 +6,7 @@ import (
   "project01/app/model"
   "project01/app/config"
 )
-var ID int32 = 0
+
 func AmbilItem(conn model.InventoryClient){
   var (
     idItem int32
@@ -30,7 +30,7 @@ func AmbilItem(conn model.InventoryClient){
 func AddItem (conn model.InventoryClient) {
 
   var (
-    idItem int32 = ID
+    idItem int32 = 0
     namaItem string
     jumlah int32
     kategori int32

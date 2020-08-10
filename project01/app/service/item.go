@@ -5,7 +5,6 @@ import (
   "project01/app/model"
   "fmt"
 )
-
 var Inventory *model.Item
 var InventoryList *model.ItemList
 
@@ -57,8 +56,8 @@ func removeInventory (slice []*model.Item, s int32) []*model.Item {
 
 func (*Service) AddItem(ctx context.Context, item *model.Item) (*model.Status, error) {
   hasilFilterId := idFilterInventory(item.GetIdItem())
-
-  fmt.Println(item.GetIdItem())
+  item.IdItem = len(InventoryList.ItemList) + 1
+  log.Println("Menambahkan Item...")
 
   if hasilFilterId != nil {
     res := &model.Status {
