@@ -42,7 +42,8 @@ func main()  {
         fmt.Println("2. Lihat Semua Barang")
         fmt.Println("3. Lihat Semua Berdasarkan Kategori")
         fmt.Println("4. Konfigurasi Kategori")
-        fmt.Println("5.Logout")
+        fmt.Println("5. Konfigurasi Barang")
+        fmt.Println("6.Logout")
       }
     }
     fmt.Println("99.Exit")
@@ -108,6 +109,15 @@ func main()  {
       }
       break
     case "5":
+      if config.Status {
+        if config.Tipe == "user" {
+          fmt.Println(service.Logout(conn))
+        }else {
+          service.MenuChangeStatus(conn)
+        }
+      }
+      break
+    case "6":
       if config.Status {
         fmt.Println(service.Logout(conn))
       }
