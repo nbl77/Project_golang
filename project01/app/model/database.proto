@@ -14,7 +14,8 @@ message Item{
   string nama_item = 2;
   int32 jumlah = 3;
   int32 kategori = 4;
-  int32 id_user = 5;
+  int32 status = 5;
+  int32 id_user = 6;
 }
 
 message User{
