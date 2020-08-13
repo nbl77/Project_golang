@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package model;
+import "app/model/database.proto";
+
+service Inventory {
+  rpc AddItem(Item) returns (Status) {}
+  rpc TakeItem(Item) returns (Item) {}
+  rpc Show(Item) returns (Item) {}
+  rpc ShowAll(Item) returns (ItemList) {}
+  rpc ShowItem(Empty) returns (ItemList) {}
+  rpc ChangeStatus(Item) returns (Item) {}
+
+  rpc Register(User) returns (Status) {}
+  rpc ShowUser(Empty) returns (UserList) {}
+  rpc Login(User) returns (Status) {}
+  rpc GetUser(User) returns (User) {}
+
+  rpc AddKategori(Kategori) returns (Status) {}
+  rpc EditKategori(Kategori) returns (Status) {}
+  rpc DeleteKategori(Kategori) returns (Status) {}
+  rpc ShowKategori(Empty) returns (KategoriList) {}
+}
